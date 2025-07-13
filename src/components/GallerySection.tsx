@@ -1,16 +1,16 @@
 import { useState } from "react";
-import { X, ExternalLink, Play } from "lucide-react";
+import { X, Play, Instagram, Facebook, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 interface GalleryItem {
-  id: number;
-  type: "image" | "video";
-  src: string;
-  category: string;
-  title: string;
-  description: string;
-  videoUrl?: string;
+ id: number;
+ type: "image" | "video";
+ src: string;
+ category: string;
+ title: string;
+ description: string;
+ videoUrl?: string;
 }
 const GallerySection = () => {
   const [selectedMedia, setSelectedMedia] = useState<GalleryItem | null>(null);
@@ -168,12 +168,44 @@ const GallerySection = () => {
           <p className="text-muted-foreground mb-8">
             Follow us on social media for the latest updates and behind-the-scenes content
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="hero" size="xl">
-              Follow on Instagram
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Button 
+              variant="hero" 
+              size="lg"
+              onClick={() => window.open('https://instagram.com/seroxideentertainment', '_blank')}
+              className="flex items-center gap-2"
+            >
+              <Instagram className="h-5 w-5" />
+              Instagram
             </Button>
-            <Button variant="outline" size="xl">
-              Subscribe to YouTube
+            <Button 
+              variant="outline" 
+              size="lg"
+              onClick={() => window.open('https://tiktok.com/@seroxideentertainment', '_blank')}
+              className="flex items-center gap-2"
+            >
+              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43V7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.43z"/>
+              </svg>
+              TikTok
+            </Button>
+            <Button 
+              variant="outline" 
+              size="lg"
+              onClick={() => window.open('https://facebook.com/seroxideentertainment', '_blank')}
+              className="flex items-center gap-2"
+            >
+              <Facebook className="h-5 w-5" />
+              Facebook
+            </Button>
+            <Button 
+              variant="outline" 
+              size="lg"
+              onClick={() => window.open('https://whatsapp.com/channel/0029VaExample', '_blank')}
+              className="flex items-center gap-2"
+            >
+              <MessageCircle className="h-5 w-5" />
+              WhatsApp Channel
             </Button>
           </div>
         </div>

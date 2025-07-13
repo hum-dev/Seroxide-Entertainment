@@ -10,8 +10,26 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useToast } from "@/hooks/use-toast";
 
 const ServicesSection = () => {
+  const { toast } = useToast();
+
+  const handleGetQuote = (serviceName: string) => {
+    // Create WhatsApp message
+    const message = `Hi! I'm interested in getting a quote for your ${serviceName} service. Could you please provide more information?`;
+    const whatsappUrl = `https://wa.me/254700000000?text=${encodeURIComponent(message)}`;
+    
+    // Open WhatsApp
+    window.open(whatsappUrl, '_blank');
+    
+    // Show toast confirmation
+    toast({
+      title: "Quote Request Sent!",
+      description: `We'll get back to you about ${serviceName} shortly.`,
+    });
+  };
+
   const services = [
     {
       id: 1,
@@ -130,6 +148,7 @@ const ServicesSection = () => {
                   <Button 
                     variant={service.popular ? "hero" : "outline"} 
                     className="w-full group"
+                    onClick={() => handleGetQuote(service.title)}
                   >
                     Get Quote
                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />

@@ -2,17 +2,33 @@ import { useState } from "react";
 import { Menu, X, Calendar, Users, Camera, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleGalleryClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsOpen(false);
+  };
 
   const navItems = [
-    { name: "Home", href: "#home", icon: null },
-    { name: "Events", href: "#events", icon: Calendar },
-    { name: "Services", href: "#services", icon: Users },
-    { name: "Gallery", href: "#gallery", icon: Camera },
-    { name: "About", href: "#about", icon: null },
-    { name: "Contact", href: "#contact", icon: Phone },
+    { name: "Home", href: "/", icon: null },
+    { name: "Events", href: "/events", icon: Calendar },
+    { name: "Services", href: "/services", icon: Users },
+    { name: "Gallery", href: "/#gallery", icon: Camera },
+    { name: "About", href: "/about", icon: null },
+    { name: "Contact", href: "/contact", icon: Phone },
   ];
 
   return (
@@ -33,13 +49,23 @@ const Navigation = () => {
           <div className="hidden md:block">
             <div className="flex items-center space-x-8">
               {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-foreground hover:text-primary transition-colors duration-200 font-medium hover:scale-105 transform"
-                >
-                  {item.name}
-                </a>
+                item.name === 'Gallery' ? (
+                  <button
+                    key={item.name}
+                    onClick={handleGalleryClick}
+                    className="text-foreground hover:text-primary transition-colors duration-200 font-medium hover:scale-105 transform"
+                  >
+                    {item.name}
+                  </button>
+                ) : (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    className="text-foreground hover:text-primary transition-colors duration-200 font-medium hover:scale-105 transform"
+                  >
+                    {item.name}
+                  </Link>
+                )
               ))}
               <Button variant="hero" size="default" className="ml-4">
                 Book Us
@@ -70,15 +96,26 @@ const Navigation = () => {
       >
         <div className="px-2 pt-2 pb-3 space-y-1 bg-background/95 backdrop-blur-lg border-b border-border">
           {navItems.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className="flex items-center px-3 py-2 text-foreground hover:text-primary hover:bg-accent/10 rounded-md transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              {item.icon && <item.icon className="mr-3 h-4 w-4" />}
-              {item.name}
-            </a>
+            item.name === 'Gallery' ? (
+              <button
+                key={item.name}
+                onClick={handleGalleryClick}
+                className="flex items-center px-3 py-2 text-foreground hover:text-primary hover:bg-accent/10 rounded-md transition-colors w-full text-left"
+              >
+                {item.icon && <item.icon className="mr-3 h-4 w-4" />}
+                {item.name}
+              </button>
+            ) : (
+              <Link
+                key={item.name}
+                to={item.href}
+                className="flex items-center px-3 py-2 text-foreground hover:text-primary hover:bg-accent/10 rounded-md transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                {item.icon && <item.icon className="mr-3 h-4 w-4" />}
+                {item.name}
+              </Link>
+            )
           ))}
           <div className="pt-2">
             <Button variant="hero" size="default" className="w-full">

@@ -1,8 +1,9 @@
 import { Calendar, MapPin, Users, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import schoolTourImage from "@/assets/School-Tour.jpg";
-import djSetupImage from "@/assets/Dj-Setup.jpg";
+import { Link } from "react-router-dom";
+import schoolTourImage from "@/assets/school-tour.jpg";
+import djSetupImage from "@/assets/dj-setup.jpg";
 
 const EventsSection = () => {
   const upcomingEvents = [
@@ -181,9 +182,11 @@ const EventsSection = () => {
 
         {/* View All Events CTA */}
         <div className="text-center mt-16">
-          <Button variant="gradient" size="xl" className="pulse-glow">
-            View All Events
-          </Button>
+          <Link to="/events">
+            <Button variant="gradient" size="xl" className="pulse-glow">
+              View All Events
+            </Button>
+          </Link>
         </div>
       </div>
     </section>
