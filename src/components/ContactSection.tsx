@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import emailjs from '@emailjs/browser';
+import { useToast } from "@/hooks/use-toast";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -13,12 +15,55 @@ const ContactSection = () => {
     eventType: "",
     message: ""
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
-  };
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+
+  try {
+    // EmailJS configuration - updated parameter names to match template
+    const result = await emailjs.send(
+      'service_4owq9v7', // Replace with your EmailJS service ID
+      'template_8jzypf8', // Replace with your EmailJS template ID
+      {
+        name: formData.name,           // Changed from 'from_name' to 'name'
+        email: formData.email,         // Changed from 'from_email' to 'email'
+        phone: formData.phone,         // This was already correct
+        eventType: formData.eventType, // Changed from 'event_type' to 'eventType'
+        message: formData.message,     // This was already correct
+        to_email: 'info@seroxideentertainment.co.ke',
+      },
+      'bhGOdL7wOp5be1cW6' // Replace with your EmailJS public key
+    );
+
+    if (result.status === 200) {
+      toast({
+        title: "Message sent successfully!",
+        description: "We'll get back to you as soon as possible.",
+      });
+      
+      // Clear the form
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        eventType: "",
+        message: ""
+      });
+    }
+  } catch (error) {
+    console.error('EmailJS error:', error);
+    toast({
+      variant: "destructive",
+      title: "Failed to send message",
+      description: "Please try again or contact us directly.",
+    });
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -152,9 +197,9 @@ const ContactSection = () => {
                     />
                   </div>
                   
-                  <Button type="submit" variant="hero" size="lg" className="w-full">
+                  <Button type="submit" variant="hero" size="lg" className="w-full" disabled={isSubmitting}>
                     <Send className="mr-2 h-5 w-5" />
-                    Send Message
+                    {isSubmitting ? "Sending..." : "Send Message"}
                   </Button>
                 </form>
               </CardContent>

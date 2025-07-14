@@ -67,9 +67,11 @@ const Navigation = () => {
                   </Link>
                 )
               ))}
-              <Button variant="hero" size="default" className="ml-4">
-                Book Us
-              </Button>
+              <Link to="/contact">
+                <Button variant="hero" size="default" className="ml-4">
+                  Book Us
+                </Button>
+              </Link>
             </div>
           </div>
 
@@ -118,9 +120,11 @@ const Navigation = () => {
             )
           ))}
           <div className="pt-2">
-            <Button variant="hero" size="default" className="w-full">
-              Book Us
-            </Button>
+            <Link to="/contact" className="block">
+              <Button variant="hero" size="default" className="w-full">
+                Book Us
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
