@@ -30,6 +30,39 @@ const ServicesSection = () => {
     });
   };
 
+  const handleFreeConsultation = () => {
+    // Create WhatsApp message for consultation
+    const message = `Hi! I'd like to schedule a free consultation to discuss my event needs. When would be a good time to talk?`;
+    const whatsappUrl = `https://wa.me/254700000000?text=${encodeURIComponent(message)}`;
+    
+    // Open WhatsApp
+    window.open(whatsappUrl, '_blank');
+    
+    // Show toast confirmation
+    toast({
+      title: "Consultation Request Sent!",
+      description: "We'll contact you shortly to schedule your free consultation.",
+    });
+  };
+
+  const handleViewPortfolio = () => {
+    // Navigate to gallery section on same page or create a portfolio modal
+    const gallerySection = document.getElementById('gallery');
+    if (gallerySection) {
+      gallerySection.scrollIntoView({ behavior: 'smooth' });
+      toast({
+        title: "Portfolio",
+        description: "Check out our gallery below to see our previous work!",
+      });
+    } else {
+      // Fallback: create a simple portfolio modal or external link
+      toast({
+        title: "Portfolio Coming Soon",
+        description: "Our detailed portfolio page is under development. Check our gallery section for now!",
+      });
+    }
+  };
+
   const services = [
     {
       id: 1,
@@ -191,10 +224,10 @@ const ServicesSection = () => {
             Let's discuss how we can bring your vision to life with our professional entertainment services.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="hero" size="xl">
+            <Button variant="hero" size="xl" onClick={handleFreeConsultation}>
               Get Free Consultation
             </Button>
-            <Button variant="outline" size="xl">
+            <Button variant="outline" size="xl" onClick={handleViewPortfolio}>
               View Our Portfolio
             </Button>
           </div>

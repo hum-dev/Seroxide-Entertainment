@@ -12,7 +12,7 @@ const HeroSection = () => {
       subtitle: "Kenya's Premier Youth Entertainment Experience",
       description: "From school tours to epic concerts, we create unforgettable experiences that connect with the youth culture.",
       image: heroImage,
-      stats: { events: "500+", attendees: "50K+", schools: "200+" }
+      stats: { events: "5+", attendees: "1K+", schools: "3+" }
     }
   ];
 
