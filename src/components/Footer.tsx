@@ -5,25 +5,25 @@ const Footer = () => {
 
   const footerLinks = {
     services: [
-      { name: "School Tours", href: "#services" },
-      { name: "Concerts", href: "#events" },
-      { name: "Brand Activations", href: "#services" },
-      { name: "DJ Services", href: "#services" },
-      { name: "Sound & Lighting", href: "#services" }
+      { name: "School Tours", href: "/services" },
+      { name: "Concerts", href: "/events" },
+      { name: "Brand Activations", href: "/services" },
+      { name: "DJ Services", href: "/services" },
+      { name: "Sound & Lighting", href: "/services" }
     ],
     company: [
-      { name: "About Us", href: "#about" },
-      { name: "Our Team", href: "#about" },
-      { name: "Testimonials", href: "#testimonials" },
-      { name: "Gallery", href: "#gallery" },
-      { name: "Blog", href: "#blog" }
+      { name: "About Us", href: "/about" },
+      { name: "Our Team", href: "/about" },
+      { name: "Testimonials", href: "/#testimonials" },
+      { name: "Gallery", href: "/#gallery" },
+      { name: "Blog", href: "#" }
     ],
     support: [
-      { name: "Contact Us", href: "#contact" },
-      { name: "Book Event", href: "#contact" },
-      { name: "Get Quote", href: "#contact" },
+      { name: "Contact Us", href: "/contact" },
+      { name: "Book Event", href: "/contact" },
+      { name: "Get Quote", href: "/contact" },
       { name: "FAQ", href: "#" },
-      { name: "Support", href: "#contact" }
+      { name: "Support", href: "/contact" }
     ]
   };
 

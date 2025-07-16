@@ -97,41 +97,78 @@ const TestimonialsSection = () => {
           </div>
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {testimonials.map((testimonial) => (
-            <Card key={testimonial.id} className="hover-lift card-shadow bg-card/80 backdrop-blur-sm">
-              <CardContent className="p-6">
-                {/* Quote Icon */}
-                <Quote className="h-8 w-8 text-primary mb-4" />
-                
-                {/* Rating */}
-                <div className="flex items-center mb-4">
-                  {[...Array(testimonial.rating)].map((_, index) => (
-                    <Star key={index} className="h-4 w-4 fill-primary text-primary" />
-                  ))}
-                </div>
-                
-                {/* Content */}
-                <p className="text-foreground mb-6 leading-relaxed">
-                  "{testimonial.content}"
-                </p>
-                
-                {/* Author */}
-                <div className="flex items-center">
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="w-12 h-12 rounded-full object-cover mr-4"
-                  />
-                  <div>
-                    <div className="font-semibold text-foreground">{testimonial.name}</div>
-                    <div className="text-sm text-muted-foreground">{testimonial.role}</div>
+        {/* Testimonials Continuous Scroll */}
+        <div className="relative overflow-hidden">
+          <div className="flex gap-8 animate-scroll-horizontal">
+            {/* First set of testimonials */}
+            {testimonials.map((testimonial) => (
+              <Card key={testimonial.id} className="flex-shrink-0 w-96 hover-lift card-shadow bg-card/80 backdrop-blur-sm">
+                <CardContent className="p-6">
+                  {/* Quote Icon */}
+                  <Quote className="h-8 w-8 text-primary mb-4" />
+                  
+                  {/* Rating */}
+                  <div className="flex items-center mb-4">
+                    {[...Array(testimonial.rating)].map((_, index) => (
+                      <Star key={index} className="h-4 w-4 fill-primary text-primary" />
+                    ))}
                   </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+                  
+                  {/* Content */}
+                  <p className="text-foreground mb-6 leading-relaxed">
+                    "{testimonial.content}"
+                  </p>
+                  
+                  {/* Author */}
+                  <div className="flex items-center">
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      className="w-12 h-12 rounded-full object-cover mr-4"
+                    />
+                    <div>
+                      <div className="font-semibold text-foreground">{testimonial.name}</div>
+                      <div className="text-sm text-muted-foreground">{testimonial.role}</div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+            {/* Duplicate set for seamless loop */}
+            {testimonials.map((testimonial) => (
+              <Card key={`${testimonial.id}-duplicate`} className="flex-shrink-0 w-96 hover-lift card-shadow bg-card/80 backdrop-blur-sm">
+                <CardContent className="p-6">
+                  {/* Quote Icon */}
+                  <Quote className="h-8 w-8 text-primary mb-4" />
+                  
+                  {/* Rating */}
+                  <div className="flex items-center mb-4">
+                    {[...Array(testimonial.rating)].map((_, index) => (
+                      <Star key={index} className="h-4 w-4 fill-primary text-primary" />
+                    ))}
+                  </div>
+                  
+                  {/* Content */}
+                  <p className="text-foreground mb-6 leading-relaxed">
+                    "{testimonial.content}"
+                  </p>
+                  
+                  {/* Author */}
+                  <div className="flex items-center">
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      className="w-12 h-12 rounded-full object-cover mr-4"
+                    />
+                    <div>
+                      <div className="font-semibold text-foreground">{testimonial.name}</div>
+                      <div className="text-sm text-muted-foreground">{testimonial.role}</div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
 
         {/* Call to Action */}
