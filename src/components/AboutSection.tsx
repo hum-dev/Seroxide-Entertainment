@@ -1,5 +1,11 @@
 import { Award, Heart, Users, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import manael from "@/assets/Manael Okoth.jpeg";
+import thomas from "@/assets/Tom.jpg";
+import dan from "@/assets/Heston Kariuki.jpeg";
+import ochola from "@/assets/Paul-Ochola1.png";
+import mwasame from "@/assets/Paul.jpg";
+import mutuma from "@/assets/Mutuma Mwika.jpeg";
 
 const AboutSection = () => {
   const values = [
@@ -28,39 +34,39 @@ const AboutSection = () => {
   const team = [
     {
       name: "Manael Odhiambo",
-      role: " CEO and Founder",
-      bio: " CEO and Founder Visionary leader ",
-      image: "../assets/Manael Okoth.jpeg"
+      role: "Founder & CEO",
+      bio: "Visionary leader with 8+ years in youth entertainment",
+      image: manael
     },
     {
       name: "Thomas Mukundi",
       role: "Chief Operations Officer",
-      bio: "Expert in large-scale event coordination and management",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b93c?w=300&h=300&fit=crop&crop=face"
+      bio: "Chief Operations Officer with a passion for logistics and event management",
+      image: thomas
     },
     {
       name: "Hyper Dan",
-      role: "Head Of Operations",
-      bio: "Head Of Operations with a knack for logistics and execution",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face"
+      role: "Operations Manager",
+      bio: "Operations Manager with a knack for turning ideas into unforgettable events",
+      image: dan
     },
     {
-      name: "paul Mwasame",
-      role: "Financial Manager",
-      bio: "Expert in financial planning and management",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face"
-    },
-    {
-      name: "paul Ochola",
+      name: "Ochola The Creator",
       role: "Creatives Director",
-      bio: "Creatives Director with a passion for innovative event design",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face"
+      bio: "Creatives Director with a passion for innovative event experiences",
+      image: ochola
+    },
+    {
+      name: "Paul Mwasame",
+      role: "Financial Manager",
+      bio: "Financial Manager with a passion for numbers and strategic planning",
+      image: mwasame
     },
     {
       name: "Mutuma Mwika",
       role: "Policy and Strategic Director",
-      bio: "Expert in policy formulation and strategic planning",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face"
+      bio: "Policy and Strategic Director with a passion for youth empowerment and community engagement",
+      image: mutuma
     },
   ];
 
@@ -178,14 +184,7 @@ const AboutSection = () => {
             Join the hundreds of schools, brands, and organizations who have trusted us 
             to deliver exceptional entertainment experiences.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="hero" size="xl">
-              Start Your Project
-            </Button>
-            <Button variant="outline" size="xl">
-              Download Our Profile
-            </Button>
-          </div>
+
         </div>
       </div>
     </section>
