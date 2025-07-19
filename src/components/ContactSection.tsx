@@ -82,19 +82,13 @@ const handleSubmit = async (e: React.FormEvent) => {
     {
       icon: Mail,
       title: "Email Us",
-      details: ["info@seroidxe.co.ke", "bookings@seroxide.co.ke"],
-      action: "mailto:info@seroxide.co.ke"
+      details: ["info@seroxideentertainment.co.ke", "bookings@seroxideentertainment.co.ke"],
+      action: "mailto:info@seroxideentertainment.co.ke"
     },
     {
       icon: MapPin,
       title: "Visit Us",
       details: ["Westlands, Nairobi", "Kenya"],
-      action: "#"
-    },
-    {
-      icon: Clock,
-      title: "Business Hours",
-      details: ["Mon - Fri: 8AM - 6PM", "Sat: 9AM - 4PM"],
       action: "#"
     }
   ];
