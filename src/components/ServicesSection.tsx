@@ -1,12 +1,17 @@
 import { 
-  GraduationCap, 
-  Users, 
+  Mic, 
   Music, 
+  Lightbulb, 
+  Users,
+  PartyPopper,
+  Dumbbell,
+  Drama,
   Megaphone,
   ArrowRight,
   Star,
-  Building,
-  PartyPopper
+  Camera,
+  Crown,
+  PaintBucket
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -66,63 +71,133 @@ const ServicesSection = () => {
   const services = [
     {
       id: 1,
-      title: "School Tours & Talks",
-      description: "Educational entertainment experiences that inspire and motivate students across Kenya's institutions.",
-      icon: GraduationCap,
-      features: ["Motivational Speaking", "Interactive Shows", "Career Guidance", "Youth Empowerment"],
-      price: "From KSh 50,000",
+      title: "MC/Hype Man",
+      description: "Energetic and engaging hosts to keep your event lively and interactive.",
+      icon: Mic,
+      features: ["Professional Hosting", "Crowd Engagement", "Event Flow Management", "Energy & Entertainment"],
+      price: "From KSh 15,000",
       popular: false,
-      color: "from-blue-500 to-purple-600"
+      color: "bg-cyan-500"
     },
     {
       id: 2,
-      title: "Brand Activations",
-      description: "Creative brand experiences that connect with the youth market through engaging entertainment.",
-      icon: Megaphone,
-      features: ["Product Launches", "Mall Activations", "Festival Sponsorships", "Digital Campaigns"],
-      price: "From KSh 150,000",
+      title: "Deejay Services",
+      description: "Skilled DJs with curated playlists tailored for weddings, parties, corporate events, and more.",
+      icon: Music,
+      features: ["Custom Playlists", "Professional Equipment", "Mixing & Scratching", "Event-Specific Music"],
+      price: "From KSh 20,000",
       popular: true,
-      color: "from-pink-500 to-red-500"
+      color: "bg-blue-600"
     },
     {
       id: 3,
-      title: "Youth Concerts",
-      description: "High-energy concerts and music festivals that celebrate Kenya's vibrant youth culture.",
-      icon: Music,
-      features: ["Artist Management", "Sound Production", "Lighting Design", "Crowd Management"],
-      price: "From KSh 200,000",
+      title: "Stage, Sound & Lighting",
+      description: "Quality equipment and setup to ensure your event looks and sounds professional.",
+      icon: Lightbulb,
+      features: ["Professional Audio Systems", "Stage Setup", "LED Lighting", "Technical Support"],
+      price: "From KSh 50,000",
       popular: false,
-      color: "from-green-500 to-blue-500"
+      color: "bg-pink-500"
     },
     {
       id: 4,
-      title: "Corporate Events",
-      description: "Plan and manage corporate gatherings and conferences.",
-      icon: Building,
-      features: ["Conference Planning", "Corporate Gatherings", "Team Building", "Professional Management"],
-      price: "From KSh 100,000",
+      title: "Dance Classes",
+      description: "Group or individual sessions in various dance styles — perfect for talent development or fitness.",
+      icon: Users,
+      features: ["Group Sessions", "Individual Training", "Various Dance Styles", "Talent Development"],
+      price: "From KSh 5,000",
       popular: false,
-      color: "from-purple-500 to-pink-500"
+      color: "bg-yellow-500"
     },
     {
       id: 5,
-      title: "Social Events",
-      description: "Organize weddings, parties, and other social gatherings.",
+      title: "Event Hosting",
+      description: "Professional planning and coordination for seamless event experiences.",
       icon: PartyPopper,
-      features: ["Wedding Planning", "Birthday Parties", "Anniversary Celebrations", "Family Gatherings"],
-      price: "From KSh 75,000",
+      features: ["Event Planning", "Coordination", "Vendor Management", "Timeline Management"],
+      price: "From KSh 30,000",
       popular: false,
-      color: "from-yellow-500 to-orange-500"
+      color: "bg-yellow-400"
     },
     {
       id: 6,
-      title: "Event Management",
-      description: "Full-service event planning and management for unforgettable youth experiences.",
+      title: "Team Building",
+      description: "Fun, customized activities that help build strong, collaborative teams.",
       icon: Users,
-      features: ["Event Planning", "Venue Coordination", "Vendor Management", "Day-of Coordination"],
-      price: "From KSh 100,000",
+      features: ["Team Activities", "Leadership Building", "Collaboration Exercises", "Corporate Programs"],
+      price: "From KSh 25,000",
       popular: false,
-      color: "from-indigo-500 to-blue-500"
+      color: "bg-cyan-400"
+    },
+    {
+      id: 7,
+      title: "Zumba & Aerobics",
+      description: "High-energy fitness sessions ideal for schools, companies, and wellness events.",
+      icon: Dumbbell,
+      features: ["Fitness Sessions", "Group Classes", "Health & Wellness", "Energizing Workouts"],
+      price: "From KSh 8,000",
+      popular: false,
+      color: "bg-blue-500"
+    },
+    {
+      id: 8,
+      title: "Drama & Acting Training",
+      description: "Creative programs to help participants build confidence, expression, and performance skills.",
+      icon: Drama,
+      features: ["Acting Workshops", "Confidence Building", "Performance Skills", "Creative Expression"],
+      price: "From KSh 12,000",
+      popular: false,
+      color: "bg-pink-600"
+    },
+    {
+      id: 9,
+      title: "Marketing & Promotions",
+      description: "Support with promoting your events or brand through strategic and creative approaches.",
+      icon: Megaphone,
+      features: ["Event Promotion", "Brand Marketing", "Social Media", "Creative Campaigns"],
+      price: "From KSh 35,000",
+      popular: false,
+      color: "bg-cyan-500"
+    },
+    {
+      id: 10,
+      title: "Mascot & Clown Acts",
+      description: "Ideal for kids' parties, school events, and public gatherings — adds fun and excitement.",
+      icon: Crown,
+      features: ["Character Entertainment", "Children's Shows", "Interactive Performances", "Fun Activities"],
+      price: "From KSh 10,000",
+      popular: false,
+      color: "bg-yellow-400"
+    },
+    {
+      id: 11,
+      title: "Artists & Bands",
+      description: "Live music and performances from talented acts to suit any occasion.",
+      icon: Music,
+      features: ["Live Performances", "Various Genres", "Professional Musicians", "Custom Setlists"],
+      price: "From KSh 40,000",
+      popular: false,
+      color: "bg-pink-500"
+    },
+    {
+      id: 12,
+      title: "Professional Dancers & Models",
+      description: "Book experienced dancers and models for events, ads, music videos, and brand campaigns.",
+      icon: Users,
+      features: ["Professional Dancers", "Event Models", "Music Videos", "Brand Campaigns"],
+      price: "From KSh 18,000",
+      popular: false,
+      color: "bg-blue-600"
+    },
+    {
+      id: 13,
+      title: "Photography, Videography & Drone Coverage",
+      description: "Full media coverage for your event — from on-the-ground shots to aerial views.",
+      icon: Camera,
+      features: ["Professional Photography", "Videography", "Drone Coverage", "Full Event Documentation"],
+      price: "From KSh 45,000",
+      popular: false,
+      color: "bg-yellow-500"
     }
   ];
 
@@ -157,8 +232,8 @@ const ServicesSection = () => {
               )}
               
               <CardHeader className="text-center pb-4">
-                <div className={`w-20 h-20 mx-auto rounded-full bg-gradient-to-r ${service.color} flex items-center justify-center mb-4 shadow-neon`}>
-                  <service.icon className="h-10 w-10 text-white" />
+                <div className={`w-16 h-16 mx-auto rounded-lg ${service.color} flex items-center justify-center mb-4 shadow-lg`}>
+                  <service.icon className="h-8 w-8 text-white" />
                 </div>
                 <CardTitle className="font-montserrat text-xl mb-2">{service.title}</CardTitle>
                 <CardDescription className="text-base">{service.description}</CardDescription>

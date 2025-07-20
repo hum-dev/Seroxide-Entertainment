@@ -1,4 +1,4 @@
-import { Calendar, MapPin, Users, Clock } from "lucide-react";
+import { Calendar, MapPin, Users, Clock, Plane } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
@@ -10,8 +10,7 @@ import djSetupImage from "@/assets/dj-setup.jpg";
 const EventsSection = () => {
   const [selectedCategory, setSelectedCategory] = useState("All Events");
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const upcomingEvents = [
+  const upcomingEvents = useMemo(() => [
     {
       id: 1,
       title: "Nairobi Youth Music Festival",
@@ -47,14 +46,51 @@ const EventsSection = () => {
       category: "Brand Activation",
       description: "Interactive brand experience with music, games, and entertainment.",
       status: "upcoming"
+    },
+    {
+      id: 4,
+      title: "Coastal Adventure Tour",
+      date: "April 5-7, 2024",
+      time: "3 Days",
+      location: "Mombasa & Diani Beach",
+      attendees: "50+",
+      image: schoolTourImage,
+      category: "Tours & Travel",
+      description: "Experience the beautiful Kenyan coast with entertainment, activities, and cultural experiences.",
+      status: "upcoming"
+    },
+    {
+      id: 5,
+      title: "Mount Kenya Hiking Adventure",
+      date: "April 12-14, 2024",
+      time: "3 Days/2 Nights",
+      location: "Mount Kenya National Park",
+      attendees: "30+",
+      image: djSetupImage,
+      category: "Tours & Travel",
+      description: "Adventure hiking trip with entertainment nights and team building activities.",
+      status: "upcoming"
+    },
+    {
+      id: 6,
+      title: "Maasai Mara Cultural Safari",
+      date: "April 20-22, 2024",
+      time: "3 Days/2 Nights",
+      location: "Maasai Mara Game Reserve",
+      attendees: "40+",
+      image: schoolTourImage,
+      category: "Tours & Travel",
+      description: "Wildlife safari combined with cultural entertainment and traditional Maasai performances.",
+      status: "upcoming"
     }
-  ];
+  ], []);
 
   const eventCategories = [
-    { name: "All Events", count: 12 },
-    { name: "Concerts", count: 5 },
-    { name: "School Tours", count: 4 },
-    { name: "Brand Activations", count: 3 }
+    { name: "All Events", count: 6 },
+    { name: "Concerts", count: 1 },
+    { name: "School Tours", count: 1 },
+    { name: "Brand Activations", count: 1 },
+    { name: "Tours & Travel", count: 3 }
   ];
 
   // Filter events based on selected category
@@ -66,7 +102,8 @@ const EventsSection = () => {
     const categoryMap = {
       "Concerts": "Concert",
       "School Tours": "School Tour", 
-      "Brand Activations": "Brand Activation"
+      "Brand Activations": "Brand Activation",
+      "Tours & Travel": "Tours & Travel"
     };
     
     return upcomingEvents.filter(event => 
