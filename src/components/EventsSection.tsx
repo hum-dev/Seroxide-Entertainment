@@ -2,13 +2,14 @@ import { Calendar, MapPin, Users, Clock, Plane } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useMemo } from "react";
 import schoolTourImage from "@/assets/school-tour.jpg";
 import djSetupImage from "@/assets/dj-setup.jpg";
 
 const EventsSection = () => {
   const [selectedCategory, setSelectedCategory] = useState("All Events");
+  const navigate = useNavigate();
 
   const upcomingEvents = useMemo(() => [
     {
@@ -184,7 +185,11 @@ const EventsSection = () => {
                 </div>
 
                 <div className="flex gap-4">
-                  <Button variant="hero" size="lg">
+                  <Button 
+                    variant="hero" 
+                    size="lg"
+                    onClick={() => navigate(`/events/${featuredEvent.id}/book`)}
+                  >
                     Get Tickets
                   </Button>
                   <Button variant="outline" size="lg">
@@ -244,8 +249,12 @@ const EventsSection = () => {
                   </div>
                 </div>
                 
-                <Button variant="outline" className="w-full hover-scale">
-                  View Details
+                <Button 
+                  variant="outline" 
+                  className="w-full hover-scale"
+                  onClick={() => navigate(`/events/${event.id}/book`)}
+                >
+                  Book Event
                 </Button>
               </CardContent>
             </Card>

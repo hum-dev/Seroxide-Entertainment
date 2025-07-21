@@ -1,7 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { useState, useMemo } from "react";
-import { Calendar, MapPin, Users, Clock, Search, Filter, Grid, List, Link } from "lucide-react";
+import { Calendar, MapPin, Users, Clock, Search, Filter, Grid, List } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -11,7 +11,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import schoolTourImage from "@/assets/school-tour.jpg";
 import djSetupImage from "@/assets/dj-setup.jpg";
 import heroConcertImage from "@/assets/festivalconcerts.jpg";
-import { Link as RouterLink } from "react-router-dom";
 
 const Events = () => {
   const [selectedCategory, setSelectedCategory] = useState("All Events");
@@ -20,8 +19,7 @@ const Events = () => {
   const [viewMode, setViewMode] = useState("grid");
 
   // Expanded events data for the dedicated events page
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const allEvents = [
+  const allEvents = useMemo(() => [
     {
       id: 1,
       title: "Nairobi Youth Music Festival",
@@ -142,7 +140,7 @@ const Events = () => {
       organizer: "Samsung Kenya",
       tags: ["technology", "demos", "interactive", "innovation"]
     }
-  ];
+  ], []);
 
   const eventCategories = [
     { name: "All Events", count: allEvents.length },
@@ -260,10 +258,19 @@ const Events = () => {
             )}
             
             <div className="flex gap-2">
-              <Button variant="default" className="flex-1">
+              <Button 
+                variant="default" 
+                className="flex-1"
+                onClick={() => window.location.href = `/events/${event.id}/book`}
+              >
                 {event.price === "Free" ? "Register Free" : "Get Tickets"}
               </Button>
-              <Button variant="outline">View Details</Button>
+              <Button 
+                variant="outline"
+                onClick={() => window.location.href = `/events/${event.id}/book`}
+              >
+                Book Event
+              </Button>
             </div>
           </CardContent>
         </div>
@@ -393,11 +400,9 @@ const Events = () => {
             <p className="text-muted-foreground mb-6">
               Partner with us to create unforgettable experiences for your audience.
             </p>
-            <RouterLink to="/contact">
             <Button variant="hero" size="lg">
               Get in Touch
             </Button>
-            </RouterLink>
           </div>
         </div>
       </section>
