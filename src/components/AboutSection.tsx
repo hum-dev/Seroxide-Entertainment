@@ -2,10 +2,11 @@ import { Award, Heart, Users, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import manael from "@/assets/Manael Okoth.jpeg";
 import thomas from "@/assets/Tom.jpg";
-import dan from "@/assets/Heston Kariuki.jpeg";
+import dan from "@/assets/hyper dan.jpg";
 import ochola from "@/assets/Paul-Ochola1.png";
-import mwasame from "@/assets/Paul.jpg";
-import mutuma from "@/assets/Mutuma Mwika.jpeg";
+import mwasame from "@/assets/Tom.jpg";
+import mutuma from "@/assets/Tom.jpg";
+import cio from "@/assets/CIO.jpg";
 
 const AboutSection = () => {
   const values = [
@@ -57,13 +58,19 @@ const AboutSection = () => {
       image: ochola
     },
     {
-      name: "Paul Mwasame",
+      name: "Humphrey M.",
+      role: "C.I.O",
+      bio: "Chief Information Officer with a deep understanding of technology and its role in shaping the future of events",
+      image: cio
+    },
+    {
+      name: "John Doe",
       role: "Financial Manager",
       bio: "Financial Manager with a passion for numbers and strategic planning",
       image: mwasame
     },
     {
-      name: "Mutuma Mwika",
+      name: "John Doe",
       role: "Policy and Strategic Director",
       bio: "Policy and Strategic Director with a passion for youth empowerment and community engagement",
       image: mutuma

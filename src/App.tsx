@@ -10,6 +10,7 @@ import Events from "./pages/Events";
 import EventBooking from "./pages/EventBooking";
 import Services from "./pages/Services";
 import NotFound from "./pages/NotFound";
+import MarketerLinkGenerator from "./pages/MarketerLinkGenerator";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/events" element={<Events />} />
           <Route path="/events/:eventId/book" element={<EventBooking />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/marketer-link-generator" element={<MarketerLinkGenerator />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

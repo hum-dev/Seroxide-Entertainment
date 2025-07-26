@@ -1,5 +1,5 @@
-import { useParams, useNavigate } from "react-router-dom";
-import { Calendar, MapPin, Users, Clock, ArrowLeft, Star } from "lucide-react";
+import { useParams, useNavigate, useSearchParams } from "react-router-dom";
+import { Calendar, MapPin, Users, Clock, ArrowLeft, Star, UserCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -10,14 +10,18 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
 // Import event images
-import heroImage from "@/assets/homepage.jpg";
+import heroImage from "@/assets/festivalconcerts.jpg";
 import schoolTourImage from "@/assets/school-tour.jpg";
 import djSetupImage from "@/assets/dj-setup.jpg";
 
 const EventBooking = () => {
   const { eventId } = useParams();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [ticketQuantity, setTicketQuantity] = useState(1);
+  
+  // Get marketer ID from URL parameter (e.g., ?ref=marketer123)
+  const marketerRef = searchParams.get('ref');
 
   // Sample event data (in a real app, this would come from your backend)
   const events = [
@@ -236,6 +240,17 @@ const EventBooking = () => {
                       KSh {event.price.toLocaleString()}
                     </span>
                   </div>
+
+                  {/* Marketer Referral Info */}
+                  {marketerRef && (
+                    <div className="flex items-center gap-3 p-3 bg-primary/10 rounded-lg border border-primary/20">
+                      <UserCheck className="h-5 w-5 text-primary" />
+                      <div>
+                        <p className="text-sm font-medium">Referred by Marketer</p>
+                        <p className="text-xs text-muted-foreground">ID: {marketerRef}</p>
+                      </div>
+                    </div>
+                  )}
 
                   <div className="space-y-2">
                     <Label htmlFor="quantity">Number of Tickets</Label>
