@@ -3,6 +3,8 @@ import { Menu, X, Calendar, Users, Camera, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import logoImage from "../assets/Slogo.png";
+
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,14 +38,30 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex-shrink-0">
-            <div className="text-2xl font-anton font-bold text-gradient">
-              SEROXIDE
+          <Link to="/" className="flex-shrink-0">
+            <div className="flex items-center space-x-3">
+              {/* Image Logo */}
+              <div className="relative">
+                <img
+                  src={logoImage}
+                  alt="Seroxide Entertainment Logo"
+                  className="h-10 w-10 rounded-full object-cover ring-2 ring-primary/20 hover:ring-primary/40 transition-all duration-300 hover:scale-105"
+                />
+                {/* Optional: Add a subtle glow effect */}
+                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/10 to-accent/10 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+              
+              {/* Text beside logo (optional - you can remove this if you want logo only) */}
+              <div className="hidden sm:block">
+                <div className="text-xl font-anton font-bold text-gradient">
+                  SEROXIDE
+                </div>
+                <div className="text-xs text-muted-foreground -mt-1 font-poppins">
+                  ENTERTAINMENT
+                </div>
+              </div>
             </div>
-            <div className="text-xs text-muted-foreground -mt-1 font-poppins">
-              ENTERTAINMENT
-            </div>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">

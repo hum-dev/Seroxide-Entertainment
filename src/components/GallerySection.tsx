@@ -28,7 +28,7 @@ const GallerySection = () => {
     {
       id: 2,
       type: "image", 
-      src: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+      src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
       category: "School Tours",
       title: "School Motivation Talk",
       description: "Inspiring students at Nairobi High School"
@@ -69,7 +69,7 @@ const GallerySection = () => {
     {
       id: 7,
       type: "video",
-      src: "https://images.unsplash.com/photo-1549451371-64aa98a6f632?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+      src: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
       category: "School Tours",
       title: "Interactive School Session",
       description: "Engaging students through interactive entertainment",
@@ -78,7 +78,7 @@ const GallerySection = () => {
     {
       id: 8,
       type: "image",
-      src: "https://images.unsplash.com/photo-1571266028243-d220c0e92733?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+      src: "https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
       category: "Brand Activations",
       title: "Product Launch",
       description: "Creative brand activation for new product launch"
@@ -132,6 +132,11 @@ const GallerySection = () => {
                   src={item.src}
                   alt={item.title}
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  onError={(e) => {
+                    // Fallback image if the original fails to load
+                    const target = e.target as HTMLImageElement;
+                    target.src = "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80";
+                  }}
                 />
                 
                 {/* Video Play Button */}
@@ -201,7 +206,7 @@ const GallerySection = () => {
             <Button 
               variant="outline" 
               size="lg"
-              onClick={() => window.open('https://whatsapp.com/channel/0029VaExample', '_blank')}
+              onClick={() => window.open('https://whatsapp.com/channel/0029VapOXm30AgW36TBdsU2N', '_blank')}
               className="flex items-center gap-2"
             >
               <MessageCircle className="h-5 w-5" />

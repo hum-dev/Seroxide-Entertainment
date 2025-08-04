@@ -230,7 +230,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                 </div>
                 <Button 
                   className="bg-green-600 hover:bg-green-700 text-white"
-                  onClick={() => window.open('https://wa.me/254712345678', '_blank')}
+                  onClick={() => window.open('https://wa.me/254795772309', '_blank')}
                 >
                   Chat Now
                 </Button>

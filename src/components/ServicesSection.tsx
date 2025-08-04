@@ -23,7 +23,7 @@ const ServicesSection = () => {
   const handleGetQuote = (serviceName: string) => {
     // Create WhatsApp message
     const message = `Hi! I'm interested in getting a quote for your ${serviceName} service. Could you please provide more information?`;
-    const whatsappUrl = `https://wa.me/254700000000?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/254795772309?text=${encodeURIComponent(message)}`;
     
     // Open WhatsApp
     window.open(whatsappUrl, '_blank');
@@ -38,7 +38,7 @@ const ServicesSection = () => {
   const handleFreeConsultation = () => {
     // Create WhatsApp message for consultation
     const message = `Hi! I'd like to schedule a free consultation to discuss my event needs. When would be a good time to talk?`;
-    const whatsappUrl = `https://wa.me/254700000000?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/254795772309?text=${encodeURIComponent(message)}`;
     
     // Open WhatsApp
     window.open(whatsappUrl, '_blank');
