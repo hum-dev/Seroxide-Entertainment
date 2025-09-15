@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    
+    <!-- Primary Meta Tags -->
+    <title>Seroxide Entertainment - Premier Event Management & Entertainment Services in Kenya</title>
+    <meta name="title" content="Seroxide Entertainment - Premier Event Management & Entertainment Services in Kenya" />
+    <meta name="description" content="Seroxide Entertainment offers top-tier event management, DJ services, live performances, and entertainment solutions across Kenya. Book us for weddings, corporate events, parties, and more." />
+    <meta name="keywords" content="event management Kenya, DJ services Nairobi, entertainment services, wedding planning, corporate events, live performances, party planning, event coordination" />
+    <meta name="author" content="Seroxide Entertainment" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="7 days" />
+    
+    <!-- Canonical URL -->
+   <link rel="canonical" href="https://seroxideentertainment.co.ke/" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://seroxideentertainment.co.ke" />
+    <meta property="og:title" content="Seroxide Entertainment - Premier Event Management & Entertainment Services" />
+    <meta property="og:description" content="Professional event management and entertainment services in Kenya. From weddings to corporate events, we make every occasion unforgettable." />
+    <meta property="og:image" content="https://seroxideentertainment.co.ke/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Seroxide Entertainment" />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://seroxideentertainment.co.ke" />
+    <meta property="twitter:title" content="Seroxide Entertainment - Premier Event Management Services" />
+    <meta property="twitter:description" content="Professional event management and entertainment services in Kenya. Making every occasion unforgettable." />
+    <meta property="twitter:image" content="https://seroxideentertainment.co.ke/twitter-image.jpg" />
+    <meta property="twitter:creator" content="@SeroxideEnt" />
+    <meta property="twitter:site" content="@SeroxideEnt" />
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="theme-color" content="#1a1a1a" />
+    <meta name="msapplication-TileColor" content="#1a1a1a" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Seroxide" />
+    
+    <!-- Geo Tags for Local SEO -->
+    <meta name="geo.region" content="KE-30" />
+    <meta name="geo.placename" content="Nairobi, Kenya" />
+    <meta name="geo.position" content="-1.286389;36.817223" />
+    <meta name="ICBM" content="-1.286389, 36.817223" />
+    
+    <!-- Business Schema JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EventPlanner",
+      "name": "Seroxide Entertainment",
+      "description": "Premier event management and entertainment services in Kenya",
+      "url": "https://seroxideentertainment.co.ke",
+      "logo": "https://seroxideentertainment.co.ke/slogo.png",
+      "image": "https://seroxideentertainment.co.ke/og-image.jpg",
+      "telephone": "+254-796828986",
+      "email": "info@seroxideentertainment.co.ke",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Your Street Address",
+        "addressLocality": "Nairobi",
+        "addressCountry": "Kenya"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "-1.286389",
+        "longitude": "36.817223"
+      },
+      "openingHours": "Mo-Su 08:00-22:00",
+      "priceRange": "$$",
+      "servedAreae": [
+        {
+          "@type": "City",
+          "name": "Nairobi"
+        },
+        {
+          "@type": "Country",
+          "name": "Kenya"
+        }
+      ],
+      "serviceType": [
+        "Event Management",
+        "DJ Services",
+        "Wedding Planning",
+        "Corporate Events",
+        "Live Entertainment"
+      ],
+      "sameAs": [
+        "https://facebook.com/seroxideentertainment",
+        "https://instagram.com/seroxideentertainment",
+        "https://twitter.com/seroxide_entertainment"
+      ]
+    }
+    </script>
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- <script type="module" crossorigin src="/assets/index-BovtyKvZ.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BaX52kOf.css"> -->
+  </head>
+
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

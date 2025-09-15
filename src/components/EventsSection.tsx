@@ -14,10 +14,10 @@ const EventsSection = () => {
   const upcomingEvents = useMemo(() => [
     {
       id: 1,
-      title: "Nairobi Youth Music Festival",
-      date: "March 15, 2024",
-      time: "6:00 PM - 11:00 PM",
-      location: "Uhuru Park, Nairobi",
+      title: "Tumbler Festival 2024",
+      date: "April 19, 2024",
+      time: "6:00 PM till dawn",
+      location: "Sifa Gardens, Kutus",
       attendees: "2,000+",
       image: djSetupImage,
       category: "Concert",

@@ -1,18 +1,18 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
-import { componentTagger } from "lovable-tagger";
+// replaced lovable-tagger with react-dev-inspector
+// inspector plugin removed temporarily; use only the React plugin to avoid missing dependency during install.
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
+export default defineConfig(() => ({
   server: {
     host: "::",
     port: 8080,
   },
   plugins: [
     react(),
-    mode === 'development' &&
-    componentTagger(),
+    // ...existing code (no additional dev-time plugins enabled)
   ].filter(Boolean),
   resolve: {
     alias: {

@@ -68,7 +68,12 @@ const ServicesSection = () => {
     }
   };
 
-  const services = [
+  // Helper to determine if a background color needs dark text
+const needsDarkText = (color: string) => {
+  return color.includes('yellow') || color.includes('cyan-400');
+};
+
+const services = [
     {
       id: 1,
       title: "MC/Hype Man",
@@ -86,7 +91,7 @@ const ServicesSection = () => {
       icon: Music,
       features: ["Custom Playlists", "Professional Equipment", "Mixing & Scratching", "Event-Specific Music"],
       price: "From KSh 20,000",
-      popular: true,
+      popular: false,
       color: "bg-blue-600"
     },
     {
@@ -116,7 +121,7 @@ const ServicesSection = () => {
       icon: PartyPopper,
       features: ["Event Planning", "Coordination", "Vendor Management", "Timeline Management"],
       price: "From KSh 30,000",
-      popular: false,
+      popular: true,
       color: "bg-yellow-400"
     },
     {
@@ -217,27 +222,31 @@ const ServicesSection = () => {
 
         {/* Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {services.map((service) => (
-            <Card 
-              key={service.id} 
-              className={`relative overflow-hidden hover-lift card-shadow ${
-                service.popular ? 'ring-2 ring-primary shadow-glow' : ''
-              }`}
-            >
-              {service.popular && (
-                <div className="absolute top-0 right-0 bg-primary text-primary-foreground px-4 py-2 text-sm font-semibold flex items-center">
-                  <Star className="mr-1 h-4 w-4" />
-                  Most Popular
-                </div>
-              )}
-              
-              <CardHeader className="text-center pb-4">
-                <div className={`w-16 h-16 mx-auto rounded-lg ${service.color} flex items-center justify-center mb-4 shadow-lg`}>
-                  <service.icon className="h-8 w-8 text-white" />
-                </div>
-                <CardTitle className="font-montserrat text-xl mb-2">{service.title}</CardTitle>
-                <CardDescription className="text-base">{service.description}</CardDescription>
-              </CardHeader>
+          {services.map((service) => {
+            const isLightBg = needsDarkText(service.color);
+            const iconClass = `h-8 w-8 ${isLightBg ? 'text-black' : 'text-white'} drop-shadow-[0_2px_3px_rgba(0,0,0,0.3)]`;
+
+            return (
+              <Card 
+                key={service.id} 
+                className={`relative overflow-hidden hover-lift card-shadow ${
+                  service.popular ? 'ring-2 ring-primary shadow-glow' : ''
+                }`}
+              >
+                {service.popular && (
+                  <div className="absolute top-0 right-0 bg-primary text-primary-foreground px-4 py-2 text-sm font-semibold flex items-center">
+                    <Star className="mr-1 h-4 w-4" />
+                    Most Popular
+                  </div>
+                )}
+                
+                <CardHeader className="text-center pb-4">
+                  <div className={`w-16 h-16 mx-auto rounded-lg ${service.color} flex items-center justify-center mb-4 shadow-lg ring-1 ring-black/10 relative before:absolute before:inset-0 before:rounded-lg before:shadow-inner before:shadow-black/5`}>
+                    <service.icon strokeWidth={2} className={iconClass} />
+                  </div>
+                  <CardTitle className="font-montserrat text-xl mb-2">{service.title}</CardTitle>
+                  <CardDescription className="text-base">{service.description}</CardDescription>
+                </CardHeader>
               
               <CardContent>
                 <div className="space-y-3 mb-6">
@@ -263,8 +272,9 @@ const ServicesSection = () => {
                   </Button>
                 </div>
               </CardContent>
-            </Card>
-          ))}
+              </Card>
+            );
+          })}
         </div>
 
         {/* Service Process */}
