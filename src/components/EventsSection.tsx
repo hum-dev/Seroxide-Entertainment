@@ -1,119 +1,31 @@
-import { Calendar, MapPin, Users, Clock, Plane } from "lucide-react";
+import { Calendar, MapPin, Users, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useMemo } from "react";
-import schoolTourImage from "@/assets/school-tour.jpg";
-import djSetupImage from "@/assets/dj-setup.jpg";
+
+import { useEventStore } from "../stores/eventStore";
+import { EventCard } from "./shared/EventCard";
 
 const EventsSection = () => {
-  const [selectedCategory, setSelectedCategory] = useState("All Events");
   const navigate = useNavigate();
-
-  const upcomingEvents = useMemo(() => [
-    {
-      id: 1,
-      title: "Tumbler Festival 2024",
-      date: "April 19, 2024",
-      time: "6:00 PM till dawn",
-      location: "Sifa Gardens, Kutus",
-      attendees: "2,000+",
-      image: djSetupImage,
-      category: "Concert",
-      description: "Join us for the biggest youth music festival in Nairobi featuring top local artists and DJs.",
-      status: "featured"
-    },
-    {
-      id: 2,
-      title: "Strathmore University Tour",
-      date: "March 20, 2024",
-      time: "10:00 AM - 2:00 PM",
-      location: "Strathmore University",
-      attendees: "500+",
-      image: schoolTourImage,
-      category: "School Tour",
-      description: "Educational entertainment experience connecting with university students.",
-      status: "upcoming"
-    },
-    {
-      id: 3,
-      title: "Brand Activation - Safaricom",
-      date: "March 25, 2024",
-      time: "3:00 PM - 8:00 PM",
-      location: "Westgate Mall",
-      attendees: "1,000+",
-      image: djSetupImage,
-      category: "Brand Activation",
-      description: "Interactive brand experience with music, games, and entertainment.",
-      status: "upcoming"
-    },
-    {
-      id: 4,
-      title: "Coastal Adventure Tour",
-      date: "April 5-7, 2024",
-      time: "3 Days",
-      location: "Mombasa & Diani Beach",
-      attendees: "50+",
-      image: schoolTourImage,
-      category: "Tours & Travel",
-      description: "Experience the beautiful Kenyan coast with entertainment, activities, and cultural experiences.",
-      status: "upcoming"
-    },
-    {
-      id: 5,
-      title: "Mount Kenya Hiking Adventure",
-      date: "April 12-14, 2024",
-      time: "3 Days/2 Nights",
-      location: "Mount Kenya National Park",
-      attendees: "30+",
-      image: djSetupImage,
-      category: "Tours & Travel",
-      description: "Adventure hiking trip with entertainment nights and team building activities.",
-      status: "upcoming"
-    },
-    {
-      id: 6,
-      title: "Maasai Mara Cultural Safari",
-      date: "April 20-22, 2024",
-      time: "3 Days/2 Nights",
-      location: "Maasai Mara Game Reserve",
-      attendees: "40+",
-      image: schoolTourImage,
-      category: "Tours & Travel",
-      description: "Wildlife safari combined with cultural entertainment and traditional Maasai performances.",
-      status: "upcoming"
-    }
-  ], []);
+  const [selectedCategory, setSelectedCategory] = useState("All Events");
+  const { events, getFilteredEvents } = useEventStore();
 
   const eventCategories = [
-    { name: "All Events", count: 6 },
-    { name: "Concerts", count: 1 },
-    { name: "School Tours", count: 1 },
-    { name: "Brand Activations", count: 1 },
-    { name: "Tours & Travel", count: 3 }
+    { name: "All Events", count: events.length },
+    { name: "Concerts", count: events.filter(e => e.category === "Concert").length },
+    { name: "School Tours", count: events.filter(e => e.category === "School Tour").length },
+    { name: "Community Drives", count: events.filter(e => e.category === "Community Drive").length },
+    { name: "Tours & Travel", count: events.filter(e => e.category === "Tours & Travel").length }
   ];
 
-  // Filter events based on selected category
   const filteredEvents = useMemo(() => {
-    if (selectedCategory === "All Events") {
-      return upcomingEvents;
-    }
-    
-    const categoryMap = {
-      "Concerts": "Concert",
-      "School Tours": "School Tour", 
-      "Brand Activations": "Brand Activation",
-      "Tours & Travel": "Tours & Travel"
-    };
-    
-    return upcomingEvents.filter(event => 
-      event.category === categoryMap[selectedCategory as keyof typeof categoryMap]
-    );
-  }, [selectedCategory, upcomingEvents]);
+    return getFilteredEvents(selectedCategory);
+  }, [selectedCategory, getFilteredEvents]);
 
   // Get featured event (first event from filtered results or first overall)
-  const featuredEvent = filteredEvents.length > 0 ? filteredEvents[0] : upcomingEvents[0];
+  const featuredEvent = filteredEvents.length > 0 ? filteredEvents[0] : events[0];
   const otherEvents = filteredEvents.length > 1 ? filteredEvents.slice(1) : [];
 
   return (
@@ -125,7 +37,7 @@ const EventsSection = () => {
             UPCOMING EVENTS
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            Experience the hottest events, concerts, and activations that bring youth culture to life across Kenya.
+            Experience the hottest events, concerts, and experiences that bring youth culture to life.
           </p>
         </div>
 
@@ -155,10 +67,10 @@ const EventsSection = () => {
           <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-primary/20 to-accent/20 p-8 hover-lift">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
-                <div className="inline-block px-4 py-2 bg-primary text-primary-foreground rounded-full text-sm font-semibold mb-4">
+                <div className="inline-block px-4 py-2 bg-accent text-primary-foreground rounded-full text-sm font-semibold mb-4 transition-all duration-200 hover:bg-primary hover:text-primary-foreground cursor-default transform hover:-translate-y-0.5 hover:scale-[1.02]">
                   FEATURED EVENT
                 </div>
-                <h3 className="text-3xl md:text-4xl font-anton font-bold text-foreground mb-4">
+                <h3 className="text-3xl md:text-4xl font-sans font-bold text-foreground mb-4">
                   {featuredEvent.title}
                 </h3>
                 <p className="text-muted-foreground mb-6 text-lg">
@@ -192,9 +104,9 @@ const EventsSection = () => {
                   >
                     Get Tickets
                   </Button>
-                  <Button variant="outline" size="lg">
-                    Learn More
-                  </Button>
+                  {/* <Button variant="outline" size="lg">
+                   <Link to={`/events/${featuredEvent.id}`}> Learn More </Link>
+                  </Button> */}
                 </div>
               </div>
               
@@ -204,7 +116,7 @@ const EventsSection = () => {
                   alt={featuredEvent.title}
                   className="w-full h-80 object-cover rounded-xl shadow-neon"
                 />
-                <div className="absolute top-4 right-4 bg-accent text-accent-foreground px-3 py-1 rounded-full text-sm font-semibold">
+                <div className="absolute top-4 right-4 bg-accent text-primary-foreground px-3 py-1 rounded-full text-sm font-semibold transition-all duration-200 hover:bg-primary hover:text-primary-foreground cursor-default transform hover:-translate-y-0.5 hover:scale-[1.02]">
                   {featuredEvent.category}
                 </div>
               </div>
@@ -216,48 +128,7 @@ const EventsSection = () => {
         {otherEvents.length > 0 && (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             {otherEvents.map((event) => (
-            <Card key={event.id} className="hover-lift overflow-hidden card-shadow">
-              <div className="relative">
-                <img
-                  src={event.image}
-                  alt={event.title}
-                  className="w-full h-48 object-cover"
-                />
-                <div className="absolute top-4 left-4 bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-xs font-semibold">
-                  {event.category}
-                </div>
-              </div>
-              
-              <CardHeader>
-                <CardTitle className="font-montserrat">{event.title}</CardTitle>
-                <CardDescription>{event.description}</CardDescription>
-              </CardHeader>
-              
-              <CardContent>
-                <div className="space-y-2 mb-4">
-                  <div className="flex items-center text-sm text-muted-foreground">
-                    <Calendar className="mr-2 h-4 w-4" />
-                    <span>{event.date}</span>
-                  </div>
-                  <div className="flex items-center text-sm text-muted-foreground">
-                    <MapPin className="mr-2 h-4 w-4" />
-                    <span>{event.location}</span>
-                  </div>
-                  <div className="flex items-center text-sm text-muted-foreground">
-                    <Users className="mr-2 h-4 w-4" />
-                    <span>{event.attendees} Expected</span>
-                  </div>
-                </div>
-                
-                <Button 
-                  variant="outline" 
-                  className="w-full hover-scale"
-                  onClick={() => navigate(`/events/${event.id}/book`)}
-                >
-                  Book Event
-                </Button>
-              </CardContent>
-            </Card>
+            <EventCard key={event.id} event={event} />
             ))}
           </div>
         )}

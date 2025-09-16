@@ -81,7 +81,7 @@ const HeroSection = () => {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto fade-in-up" style={{ animationDelay: "1.5s" }}>
+          {/* <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto fade-in-up" style={{ animationDelay: "1.5s" }}>
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-anton text-gradient font-bold">
                 {slides[currentSlide].stats.events}
@@ -100,16 +100,16 @@ const HeroSection = () => {
               </div>
               <div className="text-white/70 font-poppins">Schools Visited</div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+      {/* <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
         <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
           <div className="w-1 h-3 bg-white/70 rounded-full animate-bounce mt-2"></div>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };
