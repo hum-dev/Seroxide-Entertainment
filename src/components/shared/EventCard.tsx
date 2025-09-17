@@ -74,12 +74,12 @@ export const EventCard = ({ event, isListView = false, showFullDetails = false }
           <div className="flex gap-4">
             {event.status !== "Past" && (
               <Button asChild variant="gradient">
-                <Link to={`/events/${event.id}/book`}>Get Tickets</Link>
+                <Link to={`/events/${event.id.toString()}/book`}>Get Tickets</Link>
               </Button>
             )}
-            <Button asChild variant="outline">
-              <Link to={`/events/${event.id}`}>Learn More</Link>
-            </Button>
+            {/* <Button asChild variant="outline">
+              <Link to={`/events/${event.id.toString()}`}>Learn More</Link>
+            </Button> */}
           </div>
         </CardContent>
       </div>

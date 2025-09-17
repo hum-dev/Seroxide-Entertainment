@@ -52,8 +52,9 @@ const Events = () => {
       } else if (sortBy === "attendees") {
         return parseInt(b.attendees) - parseInt(a.attendees);
       } else if (sortBy === "price") {
-        const aPrice = a.price === "Free" ? 0 : parseInt((a.price ?? "0").replace(/\D/g, ""));
-        const bPrice = b.price === "Free" ? 0 : parseInt((b.price ?? "0").replace(/\D/g, ""));
+        // Get the lowest ticket price for each event (regular ticket price)
+        const aPrice = a.tickets?.[0]?.price || 0;
+        const bPrice = b.tickets?.[0]?.price || 0;
         return aPrice - bPrice;
       }
       return 0;
@@ -125,7 +126,7 @@ const Events = () => {
                     <SelectContent>
                       <SelectItem value="date">Date</SelectItem>
                       <SelectItem value="attendees">Popularity</SelectItem>
-                      <SelectItem value="price">Price</SelectItem>
+                      <SelectItem value="price">Price (Lowest First)</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>

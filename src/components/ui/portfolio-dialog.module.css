@@ -1,0 +1,28 @@
+.pdfContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: calc(80vh - 120px);
+  position: relative;
+}
+
+.pdfContainer :global(.rpv-core__viewer) {
+  width: 100%;
+  height: 100%;
+}
+
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--background);
+  z-index: 10;
+}

@@ -27,7 +27,22 @@ export const useEventStore = create<EventStore>((set, get) => ({
       image: Amapiano2,
       category: "Concert",
       description: "Join us for the Amapiano Graduation After Party, featuring top DJs, live performances, and an unforgettable night of music and dance as we celebrate the class of 2025.",
-      status: "featured"
+      status: "featured",
+      tickets: [
+        {
+          type: "regular",
+          price: 2500,
+          description: "Standard entry with access to all main performances"
+        },
+        {
+          type: "vip",
+          price: 5000,
+          description: "VIP access with premium viewing area and complimentary drinks",
+          perks: ["Premium viewing area", "Complimentary drinks", "VIP lounge access", "Reserved parking"]
+        }
+      ],
+      rating: 4.8,
+      reviews: 156
     },
     {
       id: 2,
@@ -37,9 +52,24 @@ export const useEventStore = create<EventStore>((set, get) => ({
       location: "Sifa Gardens, Kutus",
       attendees: "500+",
       image: Launch,
-      category: "Launch Event",
+      category: "Concert",
       description: "Seroxide Entertainment launch was vibrant and with unforgettable performances and immersive energy which culminated to Tumbler Fest.",
-      status: "Past"
+      status: "Past",
+      tickets: [
+        {
+          type: "regular",
+          price: 3000,
+          description: "Standard entry to the launch event"
+        },
+        {
+          type: "vip",
+          price: 6000,
+          description: "VIP access with exclusive networking opportunities",
+          perks: ["Exclusive networking session", "Premium seating", "Gift bag", "Reserved parking"]
+        }
+      ],
+      rating: 4.9,
+      reviews: 89
     },
     {
       id: 3,
@@ -51,7 +81,22 @@ export const useEventStore = create<EventStore>((set, get) => ({
       image: Tumbler,
       category: "Concert",
       description: "Every April, Tumbler Fest celebrates Kenyan music and culture with a series of concerts featuring top artists.",
-      status: "Past"
+      status: "Past",
+      tickets: [
+        {
+          type: "regular",
+          price: 2500,
+          description: "General festival access"
+        },
+        {
+          type: "vip",
+          price: 5000,
+          description: "VIP festival experience with exclusive perks",
+          perks: ["VIP stage viewing", "Meet & greet passes", "Festival merchandise", "VIP refreshments"]
+        }
+      ],
+      rating: 4.7,
+      reviews: 120
     },
     {
       id: 4,
@@ -63,7 +108,22 @@ export const useEventStore = create<EventStore>((set, get) => ({
       image: Gitwe,
       category: "School Tour",
       description: "A fun and engaging school empowerment program for students, featuring workshops, mentorship, and entertainment.",
-      status: "Past"
+      status: "Past",
+      tickets: [
+        {
+          type: "regular",
+          price: 1500,
+          description: "Standard workshop access"
+        },
+        {
+          type: "vip",
+          price: 3000,
+          description: "Enhanced workshop experience",
+          perks: ["One-on-one mentoring", "Workshop materials", "Certificate", "Lunch included"]
+        }
+      ],
+      rating: 4.9,
+      reviews: 45
     },
     {
       id: 5,
@@ -75,7 +135,22 @@ export const useEventStore = create<EventStore>((set, get) => ({
       image: Kiangai,
       category: "School Tour",
       description: "A fun and engaging school empowerment program for students, featuring workshops, mentorship, and entertainment.",
-      status: "Past"
+      status: "Past",
+      tickets: [
+        {
+          type: "regular",
+          price: 1500,
+          description: "Standard workshop access"
+        },
+        {
+          type: "vip",
+          price: 3000,
+          description: "Enhanced workshop experience",
+          perks: ["One-on-one mentoring", "Workshop materials", "Certificate", "Lunch included"]
+        }
+      ],
+      rating: 4.8,
+      reviews: 34
     },
     {
       id: 6,
@@ -87,7 +162,22 @@ export const useEventStore = create<EventStore>((set, get) => ({
       image: Bikers,
       category: "Community Drive",
       description: "A community outreach program aimed at empowering local youth and bodaboda operators through education and mentorship.",
-      status: "Past"
+      status: "Past",
+      tickets: [
+        {
+          type: "regular",
+          price: 1000,
+          description: "Basic program access"
+        },
+        {
+          type: "vip",
+          price: 2500,
+          description: "Premium program experience",
+          perks: ["Priority registration", "Extended mentorship", "Take-home materials", "Refreshments"]
+        }
+      ],
+      rating: 5.0,
+      reviews: 78
     }
   ],
   

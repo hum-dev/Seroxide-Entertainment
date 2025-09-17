@@ -8,110 +8,32 @@ import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-
-// Import event images
-import heroImage from "@/assets/festivalconcerts.jpg";
-import schoolTourImage from "@/assets/school-tour.jpg";
-import djSetupImage from "@/assets/dj-setup.jpg";
+import { useEventStore } from "@/stores/eventStore";
 
 const EventBooking = () => {
   const { eventId } = useParams();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const [ticketQuantity, setTicketQuantity] = useState(1);
+  const [selectedTicketType, setSelectedTicketType] = useState<'regular' | 'vip'>('regular');
   
   // Get marketer ID from URL parameter (e.g., ?ref=marketer123)
   const marketerRef = searchParams.get('ref');
 
-  // Sample event data (in a real app, this would come from your backend)
-  const events = [
-    {
-      id: "1",
-      title: "Summer Music Festival 2024",
-      date: "March 15, 2024",
-      time: "7:00 PM",
-      location: "Nairobi National Stadium",
-      attendees: "5,000+",
-      image: heroImage,
-      category: "Concert",
-      description: "The biggest music festival featuring top local and international artists with amazing sound and lighting.",
-      price: 2500,
-      rating: 4.8,
-      reviews: 156
-    },
-    {
-      id: "2",
-      title: "University Campus Tour & Entertainment",
-      date: "March 22, 2024",
-      time: "10:00 AM",
-      location: "University of Nairobi",
-      attendees: "500+",
-      image: schoolTourImage,
-      category: "School Tour",
-      description: "Educational tour with entertainment, music, and interactive activities for students.",
-      price: 1500,
-      rating: 4.9,
-      reviews: 89
-    },
-    {
-      id: "3",
-      title: "Brand Launch Party",
-      date: "March 28, 2024",
-      time: "6:00 PM",
-      location: "KICC, Nairobi",
-      attendees: "300+",
-      image: djSetupImage,
-      category: "Brand Activation",
-      description: "Interactive brand experience with music, games, and entertainment.",
-      price: 3000,
-      rating: 4.7,
-      reviews: 43
-    },
-    {
-      id: "4",
-      title: "Coastal Adventure Tour",
-      date: "April 5-7, 2024",
-      time: "3 Days",
-      location: "Mombasa & Diani Beach",
-      attendees: "50+",
-      image: schoolTourImage,
-      category: "Tours & Travel",
-      description: "Experience the beautiful Kenyan coast with entertainment, activities, and cultural experiences.",
-      price: 15000,
-      rating: 4.9,
-      reviews: 67
-    },
-    {
-      id: "5",
-      title: "Mount Kenya Hiking Adventure",
-      date: "April 12-14, 2024",
-      time: "3 Days/2 Nights",
-      location: "Mount Kenya National Park",
-      attendees: "30+",
-      image: djSetupImage,
-      category: "Tours & Travel",
-      description: "Adventure hiking trip with entertainment nights and team building activities.",
-      price: 12000,
-      rating: 4.8,
-      reviews: 34
-    },
-    {
-      id: "6",
-      title: "Maasai Mara Cultural Safari",
-      date: "April 20-22, 2024",
-      time: "3 Days/2 Nights",
-      location: "Maasai Mara Game Reserve",
-      attendees: "40+",
-      image: schoolTourImage,
-      category: "Tours & Travel",
-      description: "Wildlife safari combined with cultural entertainment and traditional Maasai performances.",
-      price: 18000,
-      rating: 5.0,
-      reviews: 78
-    }
-  ];
+  const { events } = useEventStore();
+  const event = events.find(e => e.id.toString() === eventId);
 
-  const event = events.find(e => e.id === eventId);
+  // Default prices based on event category
+  const getEventPrice = (category: string) => {
+    const prices = {
+      'Concert': 2500,
+      'School Tour': 1500,
+      'Community Drive': 1000,
+      'Tours & Travel': 15000,
+      'Launch Event': 3000,
+    };
+    return prices[category as keyof typeof prices] || 2500;
+  };
 
   if (!event) {
     return (
@@ -130,7 +52,8 @@ const EventBooking = () => {
     );
   }
 
-  const totalPrice = event.price * ticketQuantity;
+  const selectedTicket = event?.tickets.find(t => t.type === selectedTicketType);
+  const totalPrice = (selectedTicket?.price || 0) * ticketQuantity;
 
   return (
     <div className="min-h-screen bg-background">
@@ -178,14 +101,14 @@ const EventBooking = () => {
                       <Star
                         key={i}
                         className={`h-4 w-4 ${
-                          i < Math.floor(event.rating)
+                          i < Math.floor(event.rating || 0)
                             ? "fill-yellow-400 text-yellow-400"
                             : "text-gray-300"
                         }`}
                       />
                     ))}
                     <span className="ml-2 text-sm text-muted-foreground">
-                      {event.rating} ({event.reviews} reviews)
+                      {event.rating || 0} ({event.reviews || 0} reviews)
                     </span>
                   </div>
                 </div>
@@ -234,11 +157,37 @@ const EventBooking = () => {
                 </CardHeader>
                 
                 <CardContent className="space-y-6">
-                  <div className="flex items-center justify-between p-4 bg-accent/10 rounded-lg">
-                    <span className="text-lg font-semibold">Price per ticket</span>
-                    <span className="text-2xl font-bold text-primary">
-                      KSh {event.price.toLocaleString()}
-                    </span>
+                  <div className="space-y-4">
+                    <div className="font-semibold mb-2">Select Ticket Type</div>
+                    {event.tickets.map((ticket) => (
+                      <div
+                        key={ticket.type}
+                        className={`p-4 rounded-lg border-2 cursor-pointer transition-all duration-200 ${
+                          selectedTicketType === ticket.type
+                            ? 'border-primary bg-primary/5'
+                            : 'border-accent/20 hover:border-primary/50'
+                        }`}
+                        onClick={() => setSelectedTicketType(ticket.type)}
+                      >
+                        <div className="flex justify-between items-center mb-2">
+                          <span className="font-semibold capitalize">{ticket.type} Ticket</span>
+                          <span className="text-xl font-bold text-primary">
+                            KSh {ticket.price.toLocaleString()}
+                          </span>
+                        </div>
+                        <p className="text-sm text-muted-foreground mb-2">{ticket.description}</p>
+                        {ticket.perks && (
+                          <div className="grid grid-cols-2 gap-2 mt-3">
+                            {ticket.perks.map((perk) => (
+                              <div key={perk} className="flex items-center text-sm text-muted-foreground">
+                                <div className="w-1.5 h-1.5 rounded-full bg-primary mr-2" />
+                                {perk}
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    ))}
                   </div>
 
                   {/* Marketer Referral Info */}

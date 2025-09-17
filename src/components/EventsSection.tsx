@@ -100,7 +100,7 @@ const EventsSection = () => {
                   <Button 
                     variant="hero" 
                     size="lg"
-                    onClick={() => navigate(`/events/${featuredEvent.id}/book`)}
+                    onClick={() => navigate(`/events/${featuredEvent.id.toString()}/book`)}
                   >
                     Get Tickets
                   </Button>

@@ -1,3 +1,10 @@
+export interface TicketTier {
+  type: 'regular' | 'vip';
+  price: number;
+  description?: string;
+  perks?: string[];
+}
+
 export interface Event {
   id: number;
   title: string;
@@ -9,7 +16,9 @@ export interface Event {
   category: string;
   description: string;
   status: 'featured' | 'upcoming' | 'Past';
-  price?: string;
+  tickets: TicketTier[];
+  rating?: number;
+  reviews?: number;
   organizer?: string;
   tags?: string[];
 }
@@ -27,5 +36,6 @@ export const categoryMap: CategoryMap = {
   "Concerts": "Concert",
   "School Tours": "School Tour",
   "Community Drives": "Community Drive",
-  "Tours & Travel": "Tours & Travel"
+  "Tours & Travel": "Tours & Travel",
+  "Launch Events": "Launch Event"
 };

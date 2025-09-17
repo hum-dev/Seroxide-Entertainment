@@ -16,9 +16,12 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
+import { PortfolioDialog } from "./ui/portfolio-dialog";
+import { useState } from "react";
 
 const ServicesSection = () => {
   const { toast } = useToast();
+  const [isPortfolioOpen, setIsPortfolioOpen] = useState(false);
 
   const handleGetQuote = (serviceName: string) => {
     // Create WhatsApp message
@@ -51,21 +54,7 @@ const ServicesSection = () => {
   };
 
   const handleViewPortfolio = () => {
-    // Navigate to gallery section on same page or create a portfolio modal
-    const gallerySection = document.getElementById('gallery');
-    if (gallerySection) {
-      gallerySection.scrollIntoView({ behavior: 'smooth' });
-      toast({
-        title: "Portfolio",
-        description: "Check out our gallery below to see our previous work!",
-      });
-    } else {
-      // Fallback: create a simple portfolio modal or external link
-      toast({
-        title: "Portfolio Coming Soon",
-        description: "Our detailed portfolio page is under development. Check our gallery section for now!",
-      });
-    }
+    setIsPortfolioOpen(true);
   };
 
   // Helper to determine if a background color needs dark text
@@ -318,6 +307,12 @@ const services = [
           </div>
         </div>
       </div>
+
+      {/* Portfolio Dialog */}
+      <PortfolioDialog 
+        isOpen={isPortfolioOpen} 
+        onClose={() => setIsPortfolioOpen(false)} 
+      />
     </section>
   );
 };

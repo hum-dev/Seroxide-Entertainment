@@ -1,11 +1,18 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
-// replaced lovable-tagger with react-dev-inspector
-// inspector plugin removed temporarily; use only the React plugin to avoid missing dependency during install.
 
 // https://vitejs.dev/config/
 export default defineConfig(() => ({
+  assetsInclude: ['**/*.pdf'],
+  optimizeDeps: {
+    exclude: ['react-pdf'],
+  },
+  build: {
+    rollupOptions: {
+      external: ['pdfjs-dist'],
+    },
+  },
   server: {
     host: "::",
     port: 8080,
