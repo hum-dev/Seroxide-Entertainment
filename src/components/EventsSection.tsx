@@ -21,10 +21,10 @@ const EventsSection = () => {
   ];
 
   const filteredEvents = useMemo(() => {
-    return getFilteredEvents(selectedCategory);
+    return getFilteredEvents(selectedCategory).slice(0, 4); // Limit to exactly 3 events
   }, [selectedCategory, getFilteredEvents]);
 
-  // Get featured event (first event from filtered results or first overall)
+  // Get featured event and remaining events
   const featuredEvent = filteredEvents.length > 0 ? filteredEvents[0] : events[0];
   const otherEvents = filteredEvents.length > 1 ? filteredEvents.slice(1) : [];
 

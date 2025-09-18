@@ -48,9 +48,9 @@ const Events = () => {
     // Sort events
     return [...filtered].sort((a, b) => {
       if (sortBy === "date") {
-        return new Date(a.date).getTime() - new Date(b.date).getTime();
-      } else if (sortBy === "attendees") {
-        return parseInt(b.attendees) - parseInt(a.attendees);
+        return new Date(b.date).getTime() - new Date(a.date).getTime();
+      } else if (sortBy === "category") {
+        return a.category.localeCompare(b.category);
       } else if (sortBy === "price") {
         // Get the lowest ticket price for each event (regular ticket price)
         const aPrice = a.tickets?.[0]?.price || 0;
@@ -125,7 +125,7 @@ const Events = () => {
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="date">Date</SelectItem>
-                      <SelectItem value="attendees">Popularity</SelectItem>
+                      <SelectItem value="category">Category</SelectItem>
                       <SelectItem value="price">Price (Lowest First)</SelectItem>
                     </SelectContent>
                   </Select>

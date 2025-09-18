@@ -204,7 +204,7 @@ const services = [
             OUR SERVICES
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            From school tours to epic concerts, we provide comprehensive entertainment services 
+            From concerts, School tours we provide comprehensive entertainment services
             that resonate with Kenya's dynamic youth culture.
           </p>
         </div>

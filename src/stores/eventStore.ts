@@ -6,6 +6,9 @@ import Tumbler from '../assets/tumbler.png';
 import Gitwe from '../assets/Gitwe.jpg';
 import Kiangai from '../assets/Kiangai.jpg';
 import Bikers from '../assets/Bikers.png';
+import Sneakers from '../assets/Sneakers&Jersey.png';
+import Karibu from '../assets/Karibu Campus.png';
+import Amapiano from '../assets/Amapiano.jpg';
 
 interface EventStore {
   events: Event[];
@@ -110,17 +113,7 @@ export const useEventStore = create<EventStore>((set, get) => ({
       description: "A fun and engaging school empowerment program for students, featuring workshops, mentorship, and entertainment.",
       status: "Past",
       tickets: [
-        {
-          type: "regular",
-          price: 1500,
-          description: "Standard workshop access"
-        },
-        {
-          type: "vip",
-          price: 3000,
-          description: "Enhanced workshop experience",
-          perks: ["One-on-one mentoring", "Workshop materials", "Certificate", "Lunch included"]
-        }
+        
       ],
       rating: 4.9,
       reviews: 45
@@ -137,17 +130,7 @@ export const useEventStore = create<EventStore>((set, get) => ({
       description: "A fun and engaging school empowerment program for students, featuring workshops, mentorship, and entertainment.",
       status: "Past",
       tickets: [
-        {
-          type: "regular",
-          price: 1500,
-          description: "Standard workshop access"
-        },
-        {
-          type: "vip",
-          price: 3000,
-          description: "Enhanced workshop experience",
-          perks: ["One-on-one mentoring", "Workshop materials", "Certificate", "Lunch included"]
-        }
+        
       ],
       rating: 4.8,
       reviews: 34
@@ -164,23 +147,118 @@ export const useEventStore = create<EventStore>((set, get) => ({
       description: "A community outreach program aimed at empowering local youth and bodaboda operators through education and mentorship.",
       status: "Past",
       tickets: [
-        {
-          type: "regular",
-          price: 1000,
-          description: "Basic program access"
-        },
-        {
-          type: "vip",
-          price: 2500,
-          description: "Premium program experience",
-          perks: ["Priority registration", "Extended mentorship", "Take-home materials", "Refreshments"]
-        }
+       
       ],
       rating: 5.0,
       reviews: 78
+    },
+    {
+      id: 7,
+      title: "Sneakers & Jersey",
+      date: "Jul 13, 2024",
+      time: "5:00 PM till dawn",
+      location: "Night Fall Park, Thika",
+      attendees: "3,000+",
+      image: Sneakers,
+      category: "Concert",
+      description: "This event fuses fashion and music, giving the spotlight to street style.",
+      status: "Past",
+      tickets: [
+        {
+          type: "regular",
+          price: 1500,
+          description: "Standard entry with access to all main performances"
+        },
+        { type: "vip",
+          price: 3000,
+          description: "VIP access with premium viewing area and complimentary drinks",
+          perks: ["Premium viewing area", "Complimentary drinks", "VIP lounge access", "Reserved parking"]
+        }
+      ],
+      rating: 4.6,
+      reviews: 200
+    },
+    {
+      id: 8,
+      title: "Karibu Campus 1.0",
+      date: "Aug 13, 2024",
+      time: "6:00 PM till dawn",
+      location: "Sifa Gardens, Kutus",
+      attendees: "2000+",
+      image: Karibu,
+      category: "Concert",
+      description: "An exciting concert event featuring top artists and a vibrant atmosphere.",
+      status: "Past",
+      tickets: [
+        {
+          type: "regular",
+          price: 2000,
+          description: "General admission ticket"
+        },
+        {
+          type: "vip",
+          price: 4000,
+          description: "VIP ticket with exclusive access"
+        }
+      ],
+      rating: 4.9,
+      reviews: 150
+    },
+    {
+      id: 9,
+      title: "Graduation After Party - Amapiano Night",
+      date: "Sep 27, 2024",
+      time: "6:00 PM till dawn",
+      location: "Sifa Gardens, Kutus",
+      attendees: "2,000+",
+      image: Amapiano,
+      category: "Concert",
+      description: "A graduation after party featuring Amapiano music, celebrating the achievements of graduates.",
+      status: "Past",
+      tickets: [
+        {
+          type: "regular",
+          price: 2000,
+          description: "General admission ticket"
+        },
+        {
+          type: "vip",
+          price: 4000,
+          description: "VIP ticket with exclusive access"
+        }
+      ],
+      rating: 4.9,
+      reviews: 150
+    },
+    //Anniversary Event
+    {
+      id: 10,
+      title: "Seroxide Entertainment Anniversary Gala",
+      date: "Apr 17, 2025",
+      time: "7:00 PM till dawn",
+      location: "Sifa Gardens, Kutus",
+      attendees: "2000+",
+      image: Amapiano,
+      category: "Concert",
+      description: "Celebrate Seroxide Entertainment's anniversary with a glamorous gala featuring live music, gourmet dining, and special performances.",
+      status: "Past",
+      tickets: [
+        {
+          type: "regular",
+          price: 5000,
+          description: "Standard entry to the anniversary gala"
+        },
+        {
+          type: "vip",
+          price: 10000,
+          description: "VIP access with exclusive perks",
+          perks: ["Front-row seating", "Meet & greet with performers", "Gourmet dinner", "Commemorative gift"]
+        }
+      ],
+      rating: 4.9,
+      reviews: 85
     }
   ],
-  
   getFilteredEvents: (category: string) => {
     const { events } = get();
     if (category === "All Events") {

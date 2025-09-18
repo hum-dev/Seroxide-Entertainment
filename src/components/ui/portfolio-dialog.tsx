@@ -33,14 +33,14 @@ export function PortfolioDialog({ isOpen, onClose }: PortfolioDialogProps) {
           <DialogDescription>
             View our comprehensive portfolio and past work
           </DialogDescription>
-          <Button
+          {/* <Button
             variant="ghost"
             size="icon"
             className="absolute right-4 top-4"
             onClick={onClose}
           >
             <X className="h-4 w-4" />
-          </Button>
+          </Button> */}
         </DialogHeader>
         <div className={styles.pdfContainer}>
           {loading && (
