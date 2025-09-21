@@ -53,7 +53,7 @@ const HeroSection = () => {
           </h1>
 
           {/* Tagline */}
-          <p className="text-xl md:text-3xl text-white/90 mb-4 font-montserrat font-semibold fade-in-up" style={{ animationDelay: "0.3s" }}>
+          <p className="text-xl md:text-3xl text-white/90 mb-4 font-oswald font-semibold fade-in-up" style={{ animationDelay: "0.3s" }}>
             {slides[currentSlide].title}
           </p>
 

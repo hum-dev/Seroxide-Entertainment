@@ -183,7 +183,7 @@ const TestimonialsSection = () => {
 
         {/* Call to Action */}
         <div className="text-center mt-16">
-          <h3 className="text-2xl font-montserrat font-bold mb-4">
+          <h3 className="text-2xl font-oswald font-bold mb-4">
             Ready to Join Our Success Stories?
           </h3>
           <p className="text-muted-foreground mb-8">

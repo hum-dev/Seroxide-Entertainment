@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Phone, Mail, MapPin, Clock, Send, MessageSquare } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -76,8 +77,8 @@ const handleSubmit = async (e: React.FormEvent) => {
     {
       icon: Phone,
       title: "Call Us",
-      details: ["+254 712 345 678", "+254 723 456 789"],
-      action: "tel:+254712345678"
+      details: ["+254 796 828986"],
+      action: "tel:+254796828986"
     },
     {
       icon: Mail,
@@ -88,7 +89,7 @@ const handleSubmit = async (e: React.FormEvent) => {
     {
       icon: MapPin,
       title: "Visit Us",
-      details: ["Westlands, Nairobi", "Kenya"],
+      details: ["Kerugoya, Kutus", "Kenya"],
       action: "#"
     }
   ];
@@ -99,7 +100,7 @@ const handleSubmit = async (e: React.FormEvent) => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-6xl font-anton font-bold text-gradient mb-6">
-            GET IN TOUCH
+           <Link to="#contact" className="underline">GET IN TOUCH</Link>
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             Ready to create an unforgettable experience? Let's discuss your vision and 
@@ -112,7 +113,7 @@ const handleSubmit = async (e: React.FormEvent) => {
           <div>
             <Card className="card-shadow">
               <CardHeader>
-                <CardTitle className="font-montserrat text-2xl flex items-center">
+                <CardTitle className="font-oswald text-2xl flex items-center">
                   <Send className="mr-2 h-6 w-6 text-primary" />
                   Send Us a Message
                 </CardTitle>
@@ -210,7 +211,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                       <info.icon className="h-6 w-6 text-white" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-montserrat font-semibold text-lg mb-2">{info.title}</h3>
+                      <h3 className="font-oswald font-semibold text-lg mb-2">{info.title}</h3>
                       {info.details.map((detail, idx) => (
                         <p key={idx} className="text-muted-foreground">{detail}</p>
                       ))}
@@ -239,7 +240,7 @@ const handleSubmit = async (e: React.FormEvent) => {
 
             {/* Social Media */}
             <div className="mt-8">
-              <h3 className="font-montserrat font-semibold text-lg mb-4">Follow Us</h3>
+              <h3 className="font-oswald font-semibold text-lg mb-4">Follow Us</h3>
               <div className="flex space-x-4">
                 {[
                   { name: "Instagram", url: "#", color: "from-pink-500 to-purple-600" },
@@ -267,8 +268,8 @@ const handleSubmit = async (e: React.FormEvent) => {
               <div className="h-64 bg-gradient-to-r from-secondary/20 to-accent/20 flex items-center justify-center">
                 <div className="text-center">
                   <MapPin className="h-12 w-12 text-primary mx-auto mb-4" />
-                  <h3 className="font-montserrat font-semibold text-lg mb-2">Our Location</h3>
-                  <p className="text-muted-foreground">Westlands, Nairobi, Kenya</p>
+                  <h3 className="font-oswald font-semibold text-lg mb-2">Our Location</h3>
+                  <p className="text-muted-foreground">Kerugoya, Kirinyaga, Kenya</p>
                 </div>
               </div>
             </CardContent>

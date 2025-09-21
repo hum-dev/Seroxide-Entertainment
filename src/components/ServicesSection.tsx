@@ -233,7 +233,7 @@ const services = [
                   <div className={`w-16 h-16 mx-auto rounded-lg ${service.color} flex items-center justify-center mb-4 shadow-lg ring-1 ring-black/10 relative before:absolute before:inset-0 before:rounded-lg before:shadow-inner before:shadow-black/5`}>
                     <service.icon strokeWidth={2} className={iconClass} />
                   </div>
-                  <CardTitle className="font-montserrat text-xl mb-2">{service.title}</CardTitle>
+                  <CardTitle className="font-oswald text-xl mb-2">{service.title}</CardTitle>
                   <CardDescription className="text-base">{service.description}</CardDescription>
                 </CardHeader>
               
@@ -284,7 +284,7 @@ const services = [
                 <div className="w-16 h-16 mx-auto rounded-full bg-gradient-primary text-white flex items-center justify-center text-xl font-anton font-bold mb-4">
                   {process.step}
                 </div>
-                <h4 className="font-montserrat font-semibold text-lg mb-2">{process.title}</h4>
+                <h4 className="font-oswald font-semibold text-lg mb-2">{process.title}</h4>
                 <p className="text-muted-foreground text-sm">{process.desc}</p>
               </div>
             ))}

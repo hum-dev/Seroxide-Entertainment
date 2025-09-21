@@ -151,7 +151,7 @@ const AboutSection = () => {
                 <div className="w-20 h-20 mx-auto rounded-full bg-gradient-primary flex items-center justify-center mb-6 shadow-glow">
                   <value.icon className="h-10 w-10 text-white" />
                 </div>
-                <h4 className="text-xl font-montserrat font-semibold mb-4">{value.title}</h4>
+                <h4 className="text-xl font-oswald font-semibold mb-4">{value.title}</h4>
                 <p className="text-muted-foreground">{value.description}</p>
               </div>
             ))}
@@ -174,7 +174,7 @@ const AboutSection = () => {
                   />
                   <div className="absolute inset-0 rounded-full bg-gradient-to-t from-primary/20 to-transparent"></div>
                 </div>
-                <h4 className="text-xl font-montserrat font-semibold mb-2">{member.name}</h4>
+                <h4 className="text-xl font-oswald font-semibold mb-2">{member.name}</h4>
                 <p className="text-primary font-medium mb-3">{member.role}</p>
                 <p className="text-muted-foreground">{member.bio}</p>
               </div>

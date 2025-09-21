@@ -68,7 +68,7 @@ const Footer = () => {
             
             {/* Follow Us Section */}
             <div className="mt-6">
-              <h4 className="font-montserrat font-semibold text-lg mb-4">Follow Us</h4>
+              <h4 className="font-oswald font-semibold text-lg mb-4">Follow Us</h4>
               <div className="flex space-x-4">
                 {socialLinks.map((social) => (
                   <a
@@ -86,7 +86,7 @@ const Footer = () => {
 
           {/* Services Links */}
           <div>
-            <h3 className="font-montserrat font-semibold text-lg mb-6">Services</h3>
+            <h3 className="font-oswald font-semibold text-lg mb-6">Services</h3>
             <ul className="space-y-3">
               {footerLinks.services.map((link) => (
                 <li key={link.name}>
@@ -103,7 +103,7 @@ const Footer = () => {
 
           {/* Company Links */}
           <div>
-            <h3 className="font-montserrat font-semibold text-lg mb-6">Company</h3>
+            <h3 className="font-oswald font-semibold text-lg mb-6">Company</h3>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
@@ -120,7 +120,7 @@ const Footer = () => {
 
           {/* Support Links */}
           <div>
-            <h3 className="font-montserrat font-semibold text-lg mb-6">Support</h3>
+            <h3 className="font-oswald font-semibold text-lg mb-6">Support</h3>
             <ul className="space-y-3">
               {footerLinks.support.map((link) => (
                 <li key={link.name}>

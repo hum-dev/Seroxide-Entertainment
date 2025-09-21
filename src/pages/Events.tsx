@@ -1,7 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { useState, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Calendar, MapPin, Users, Clock, Search, Filter, Grid, List } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -191,7 +191,7 @@ const Events = () => {
               Partner with us to create unforgettable experiences for your audience.
             </p>
             <Button variant="hero" size="lg">
-              Get in Touch
+             <Link to="/contact"> Get in Touch</Link>
             </Button>
           </div>
         </div>
