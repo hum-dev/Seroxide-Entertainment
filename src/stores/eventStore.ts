@@ -9,6 +9,7 @@ import Bikers from '../assets/Bikers.png';
 import Sneakers from '../assets/Sneakers&Jersey.png';
 import Karibu from '../assets/Karibu Campus.png';
 import Amapiano from '../assets/Amapiano.jpg';
+import Anniversary from '../assets/Anniversary.jpg';
 
 interface EventStore {
   events: Event[];
@@ -238,7 +239,7 @@ export const useEventStore = create<EventStore>((set, get) => ({
       time: "7:00 PM till dawn",
       location: "Sifa Gardens, Kutus",
       attendees: "2000+",
-      image: Amapiano,
+      image: Anniversary,
       category: "Concert",
       description: "Celebrate Seroxide Entertainment's anniversary with a glamorous gala featuring live music, gourmet dining, and special performances.",
       status: "Past",
