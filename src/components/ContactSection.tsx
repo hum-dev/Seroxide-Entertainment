@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Phone, Mail, MapPin, Clock, Send, MessageSquare } from "lucide-react";
+
+import { Phone, Mail, MapPin, Clock, Send, MessageSquare, Instagram, Music, Youtube, Facebook  } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -238,26 +239,30 @@ const handleSubmit = async (e: React.FormEvent) => {
               </CardContent>
             </Card>
 
-            {/* Social Media */}
-            <div className="mt-8">
-              <h3 className="font-oswald font-semibold text-lg mb-4">Follow Us</h3>
-              <div className="flex space-x-4">
-                {[
-                  { name: "Instagram", url: "#", color: "from-pink-500 to-purple-600" },
-                  { name: "TikTok", url: "#", color: "from-black to-gray-800" },
-                  { name: "YouTube", url: "#", color: "from-red-500 to-red-700" },
-                  { name: "Facebook", url: "#", color: "from-blue-500 to-blue-700" }
-                ].map((social) => (
+          {/* Social Media */}
+          <div className="mt-8">
+            <h3 className="font-oswald font-semibold text-lg mb-4">Follow Us</h3>
+            <div className="flex space-x-4">
+              {[
+                { name: "Instagram", url: "https://instagram.com/seroxideentertainment", color: "from-pink-500 to-purple-600", icon: Instagram },
+                { name: "TikTok", url: "https://tiktok.com/@seroxideentertainment", color: "from-black to-gray-800", icon: Music },
+                { name: "YouTube", url: "https://youtube.com/@seroxideentertainment", color: "from-red-500 to-red-700", icon: Youtube },
+                { name: "Facebook", url: "https://facebook.com/seroxideentertainment", color: "from-blue-500 to-blue-700", icon: Facebook }
+              ].map((social) => {
+                const IconComponent = social.icon;
+                return (
                   <a
                     key={social.name}
                     href={social.url}
-                    className={`w-12 h-12 rounded-full bg-gradient-to-r ${social.color} flex items-center justify-center text-white font-semibold hover-scale`}
+                    className={`w-12 h-12 rounded-full bg-gradient-to-r ${social.color} flex items-center justify-center text-white hover-scale transition-transform`}
+                    aria-label={social.name}
                   >
-                    {social.name.slice(0, 2)}
+                    <IconComponent size={20} />
                   </a>
-                ))}
-              </div>
+                );
+              })}
             </div>
+          </div>
           </div>
         </div>
 

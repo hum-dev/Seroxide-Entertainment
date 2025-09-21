@@ -120,18 +120,19 @@ const GallerySection = () => {
         </div>
 
         {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
+        <div className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-6 mb-16 space-y-6">
           {filteredItems.map((item) => (
             <div
               key={item.id}
-              className="relative group cursor-pointer overflow-hidden rounded-xl hover-lift card-shadow"
+              className="relative group cursor-pointer overflow-hidden rounded-xl hover-lift card-shadow break-inside-avoid mb-6 transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1"
               onClick={() => setSelectedMedia(item)}
             >
-              <div className="aspect-square relative">
+              <div className="relative">
                 <img
                   src={item.src}
                   alt={item.title}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  className="w-full h-auto object-cover transition-all duration-500 group-hover:scale-110 group-hover:rotate-1"
+                  loading="lazy"
                   onError={(e) => {
                     // Fallback image if the original fails to load
                     const target = e.target as HTMLImageElement;
@@ -149,15 +150,15 @@ const GallerySection = () => {
                 )}
                 
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <h3 className="font-oswald font-semibold text-white text-lg mb-1">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-[2px] group-hover:backdrop-blur-none">
+                  <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                    <h3 className="font-oswald font-semibold text-white text-xl mb-2 drop-shadow-lg">
                       {item.title}
                     </h3>
-                    <p className="text-white/80 text-sm">
+                    <p className="text-white/90 text-sm font-medium drop-shadow-md">
                       {item.description}
                     </p>
-                    <span className="inline-block mt-2 px-2 py-1 bg-primary rounded-full text-white text-xs">
+                    <span className="inline-block mt-3 px-3 py-1 bg-primary/90 rounded-full text-white text-xs font-semibold backdrop-blur-sm shadow-lg">
                       {item.category}
                     </span>
                   </div>
