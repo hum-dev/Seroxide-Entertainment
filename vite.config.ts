@@ -2,26 +2,34 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
-// https://vitejs.dev/config/
 export default defineConfig(() => ({
-  base: "./", // Add this line to make assets load correctly
+  base: "./", // Use ./ instead of empty string for better compatibility
   assetsInclude: ["**/*.pdf"],
   optimizeDeps: {
     exclude: ["react-pdf"],
   },
   build: {
     rollupOptions: {
-      external: ["pdfjs-dist"],
+      // Remove or comment out the external line - it might prevent pdfjs from bundling
+      // external: ["pdfjs-dist"],
+      output: {
+        manualChunks: undefined,
+        assetFileNames: "assets/[name].[hash].[ext]",
+        chunkFileNames: "assets/[name].[hash].js",
+        entryFileNames: "assets/[name].[hash].js",
+      },
     },
-    outDir: "dist", // Specify output directory
-    emptyOutDir: true, // Clean the output directory before build
-    sourcemap: false, // Disable sourcemaps for production
+    outDir: "dist",
+    emptyOutDir: true,
+    sourcemap: false,
+    chunkSizeWarningLimit: 1600,
+    manifest: true,
   },
   server: {
     host: "::",
     port: 8080,
   },
-  plugins: [react()].filter(Boolean),
+  plugins: [react()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
