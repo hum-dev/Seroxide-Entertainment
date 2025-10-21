@@ -14,8 +14,8 @@ const TestimonialsSection = () => {
     },
     {
       id: 2,
-      name: "David Kiprotich",
-      role: "Events Manager, Strathmore University",
+      name: "Amoh De Great",
+      role: "Kirinyaga University",
       content: "Professional, creative, and truly understanding of youth culture. Seroxide delivered beyond our expectations for our annual fest. Highly recommend!",
       rating: 5,
       image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop&crop=face"

@@ -22,6 +22,9 @@ import Kiangai from "../assets/Kiangai.jpg";
 import Bikers from "../assets/Bikers.png";
 import AmapianoCrowd from "../assets/Amapiano Crowd.jpg";
 import fathermoh from "../assets/Fathermoh.jpg";
+import Thumbnail from "../assets/Thumbnail.jpg";
+import Thumb from "../assets/Thumb.jpg"
+import Recap from "../assets/amapiano recap.mp4"
 
 interface GalleryItem {
   id: number;
@@ -71,7 +74,6 @@ const GallerySection = () => {
           title: "Father Moh Performance",
           description: "Captivating performance by Father Moh at our event",
         },
-        // Add more...
       ],
       "school-tours": [
         {
@@ -84,36 +86,15 @@ const GallerySection = () => {
           title: "School drive at Kiangai",
           description: "Excited students at our School drive at Kiangai event",
         },
-        // Add more...
       ],
-      "brand-activations": [
-        // {
-        //   filename: "brand1.jpg",
-        //   title: "Brand Launch Event",
-        //   description: "Successful brand activation at Westgate Mall",
-        // },
-        // {
-        //   filename: "brand2.jpg",
-        //   title: "Product Launch",
-        //   description: "Creative brand activation for new product launch",
-        // },
-        // Add more...
-      ],
-      "corporate-events": [
-        // {
-        //   filename: "corporate1.jpg",
-        //   title: "Corporate Conference",
-        //   description: "Professional event management for tech conference",
-        // },
-        // Add more...
-      ],
+      "brand-activations": [],
+      "corporate-events": [],
       "social-events": [
         {
           filename: Bikers,
           title: "Bikers Event",
           description: "Exciting moments from our Bikers event",
         },
-        // Add more...
       ],
     }),
     []
@@ -123,14 +104,27 @@ const GallerySection = () => {
   const videoConfig = React.useMemo(
     () => [
       {
-        thumbnail: "video-thumb1.jpg",
+        thumbnail: festivalConcerts,
         title: "Event Highlights Reel",
         description: "Best moments from our recent events",
         category: "Concerts",
-        videoUrl:
-          "https://www.instagram.com/reel/C8WdYCjATBc/?igsh=MXY5dTYydzR3OHQ4NA==",
+        videoUrl: "https://www.instagram.com/p/C8WdYCjATBc/embed",
       },
-      // Add more videos...
+      {
+        thumbnail: Thumbnail,
+        title: "Behind the Scenes",
+        description: "Setting up for an amazing night",
+        category: "Concerts",
+        videoUrl: "https://www.instagram.com/p/DPqgCdvDO3m/embed",
+      },
+      {
+  thumbnail: Thumb,
+  title: "Event Aftermovie",
+  description: "Full highlights from our amazing event",
+  category: "Concerts",
+  videoUrl: Recap, // Your imported video file
+  isEmbedded: false, // Self-hosted video
+},
     ],
     []
   );
@@ -146,7 +140,7 @@ const GallerySection = () => {
         items.push({
           id: id++,
           type: "image",
-          src: image.filename, // Using the filename directly since it's imported
+          src: image.filename,
           category: category
             .replace("-", " ")
             .replace(/\b\w/g, (l) => l.toUpperCase()),
@@ -156,16 +150,17 @@ const GallerySection = () => {
       });
     });
 
-    // Add videos
+    // Add videos - FIXED: Use imported thumbnail directly
     videoConfig.forEach((video) => {
       items.push({
         id: id++,
         type: "video",
-        src: `/images/gallery/thumbnails/${video.thumbnail}`,
+        src: video.thumbnail, // ✅ Use imported thumbnail directly
         category: video.category,
         title: video.title,
         description: video.description,
         videoUrl: video.videoUrl,
+        thumbnail: video.thumbnail,
       });
     });
 
@@ -381,23 +376,15 @@ const GallerySection = () => {
 
             <div className="flex-1 overflow-hidden p-3">
               {selectedMedia?.type === "video" ? (
-                <div className="aspect-video bg-black rounded-lg overflow-hidden shadow relative group">
+                <div className="aspect-video bg-black rounded-lg overflow-hidden shadow-lg">
                   <MediaErrorBoundary>
-                    <LazyLoadImage
-                      src={selectedMedia?.thumbnail || selectedMedia?.src}
-                      alt={selectedMedia?.title}
-                      effect="blur"
-                      className="w-full h-full object-cover"
-                      wrapperClassName="w-full h-full"
-                    />
-                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                      <Play className="w-16 h-16 text-white" />
-                    </div>
                     <iframe
                       src={selectedMedia?.videoUrl}
-                      className="w-full h-full absolute inset-0"
+                      className="w-full h-full"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
                       title={selectedMedia?.title}
+                      style={{ border: 'none' }}
                     />
                   </MediaErrorBoundary>
                 </div>
