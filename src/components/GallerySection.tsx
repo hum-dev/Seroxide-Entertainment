@@ -380,11 +380,10 @@ const GallerySection = () => {
                   <MediaErrorBoundary>
                     <iframe
                       src={selectedMedia?.videoUrl}
-                      className="w-full h-full"
+                      className="w-full h-full border-none"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
                       title={selectedMedia?.title}
-                      style={{ border: 'none' }}
                     />
                   </MediaErrorBoundary>
                 </div>
