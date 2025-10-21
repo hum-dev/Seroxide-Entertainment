@@ -4,23 +4,24 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig(() => ({
-  assetsInclude: ['**/*.pdf'],
+  base: "./", // Add this line to make assets load correctly
+  assetsInclude: ["**/*.pdf"],
   optimizeDeps: {
-    exclude: ['react-pdf'],
+    exclude: ["react-pdf"],
   },
   build: {
     rollupOptions: {
-      external: ['pdfjs-dist'],
+      external: ["pdfjs-dist"],
     },
+    outDir: "dist", // Specify output directory
+    emptyOutDir: true, // Clean the output directory before build
+    sourcemap: false, // Disable sourcemaps for production
   },
   server: {
     host: "::",
     port: 8080,
   },
-  plugins: [
-    react(),
-    // ...existing code (no additional dev-time plugins enabled)
-  ].filter(Boolean),
+  plugins: [react()].filter(Boolean),
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
